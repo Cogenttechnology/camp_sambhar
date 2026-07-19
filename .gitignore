@@ -15,7 +15,8 @@ next-env.d.ts
 /media
 *.db
 *.db-journal
-/src/app/(payload)/admin/importMap.js
+# NOTE: admin/importMap.js is intentionally NOT ignored — src/app/(payload)/layout.tsx
+# imports it, so the build fails without it. Regenerate via `tsx scripts/gen.ts`.
 
 # misc
 .DS_Store
