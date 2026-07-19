@@ -1,0 +1,204 @@
+@import 'tailwindcss';
+
+/* ─────────────────────────────────────────────────────────────
+   Camp Sambhar Resort — design tokens
+   Themes: astronomy (dark skies) · wildlife (flamingos) · salt lake
+   ───────────────────────────────────────────────────────────── */
+@theme {
+  /* ── Brand palette (STRICT — use ONLY these) ──
+     Salt Ivory #F3EBDD · Camp Red #A92B2E · Deep Terracotta #7D211D
+     Desert Sand #CBB18B · Sage #7A7B60 · Night Indigo #17253A
+     Charcoal #2A2723 · White #FFFFFF */
+
+  --color-ivory: #f3ebdd; /* Salt Ivory — primary warm background */
+  --color-white: #ffffff;
+
+  --color-red-500: #a92b2e; /* Camp Red — primary brand / CTA */
+  --color-red-600: #7d211d; /* Deep Terracotta — hover / depth */
+
+  --color-sand-400: #cbb18b; /* Desert Sand — warm neutral, borders */
+  --color-sand-300: #d8c3a4;
+  --color-sand-500: #b89a70;
+
+  --color-sage-500: #7a7b60; /* Sage — eco accent */
+  --color-sage-400: #92926f;
+  --color-sage-600: #62634c;
+
+  --color-indigo-900: #17253a; /* Night Indigo — astronomy, footer, dark hero */
+  --color-indigo-800: #223550;
+
+  --color-charcoal: #2a2723; /* Charcoal — primary text */
+  --color-charcoal-700: #423d37;
+
+  /* Semantic aliases */
+  --color-ink: var(--color-charcoal);
+  --color-muted: #6f6a62;
+  --color-paper: var(--color-ivory);
+  --color-paper-white: var(--color-white);
+  --color-night: var(--color-indigo-900);
+  --color-brand: var(--color-red-500);
+  --color-brand-deep: var(--color-red-600);
+  --color-accent: var(--color-sage-500);
+
+  /* Typography — self-hosted via next/font, exposed as CSS vars.
+     Cormorant Garamond = headings · Manrope = body/nav/buttons
+     Montserrat ExtraBold = logo wordmark ONLY */
+  --font-serif: var(--font-display), 'Cormorant Garamond', Georgia, serif;
+  --font-sans: var(--font-body), 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-logo: var(--font-logo), 'Montserrat', ui-sans-serif, sans-serif;
+
+  /* Fluid type scale */
+  --text-hero: clamp(2.75rem, 6vw, 5.5rem);
+  --text-hero--line-height: 1.02;
+  --text-display: clamp(2rem, 4vw, 3.5rem);
+  --text-display--line-height: 1.08;
+
+  /* Layout */
+  --spacing-section: clamp(4rem, 9vw, 8rem);
+  --radius-soft: 0.5rem;
+}
+
+/* ── Base ── */
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: inherit;
+}
+
+/* ── Utilities ── */
+.container-page {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-red-500);
+}
+
+.prose-body :where(p, ul, ol):not(:last-child) {
+  margin-bottom: 1.15em;
+}
+.prose-body :where(h2, h3) {
+  margin-top: 1.6em;
+  margin-bottom: 0.5em;
+}
+.prose-body a {
+  color: var(--color-red-600);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Reveal-on-scroll — progressive enhancement.
+   Content is visible by default; only once JS marks <html class="js"> do we
+   hide-then-reveal, so no-JS users and crawlers always see content. */
+.reveal {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.js .reveal {
+  opacity: 0;
+}
+/* Directional hidden states */
+.js .reveal[data-dir='up'] {
+  transform: translateY(28px);
+}
+.js .reveal[data-dir='down'] {
+  transform: translateY(-28px);
+}
+.js .reveal[data-dir='left'] {
+  transform: translateX(36px);
+}
+.js .reveal[data-dir='right'] {
+  transform: translateX(-36px);
+}
+.js .reveal[data-dir='scale'] {
+  transform: scale(0.94);
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Parallax layer — driven by a CSS var updated on scroll (JS), reduced-motion safe. */
+.parallax {
+  will-change: transform;
+  transform: translate3d(0, var(--parallax-y, 0), 0) scale(1.08);
+}
+@media (prefers-reduced-motion: reduce) {
+  .parallax {
+    transform: none;
+  }
+}
+
+/* Slow ambient drift for decorative line-art */
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .float-slow {
+    animation: none;
+  }
+}

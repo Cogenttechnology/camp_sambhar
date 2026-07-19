@@ -1,0 +1,67 @@
+SOURCE: Policies •\GDPR  Policy.docx
+
+CAMP SAMBHAR RESORT
+GDPR
+General Data Protection Regulation (GDPR),
+Camp Sambhar Resort is committed to protecting the privacy and personal data of all website visitors and guests, including individuals located in the European Economic Area (EEA), in accordance with the General Data Protection Regulation (GDPR), where applicable.
+1. Personal Data We Collect
+We may collect the following personal data:
+Name
+Email address
+Phone number
+Postal address
+Booking and reservation details
+Payment information (processed securely through third-party payment providers)
+IP address, browser type, device information, and website usage data
+Any information voluntarily provided through enquiry forms or email communication
+2. Purpose of Processing
+We process personal data for the following purposes:
+To manage reservations and guest services.
+To respond to enquiries and customer support requests.
+To process payments through secure payment partners.
+To communicate important booking updates.
+To improve our website, services, and user experience.
+To comply with applicable legal obligations.
+To send marketing communications where you have provided your consent.
+3. Legal Basis for Processing
+Where GDPR applies, we process your personal data based on one or more of the following legal grounds:
+Your consent.
+Performance of a contract (such as fulfilling your booking).
+Compliance with legal obligations.
+Our legitimate business interests, provided they do not override your rights and freedoms.
+4. Data Retention
+We retain personal data only for as long as necessary to:
+Provide our services.
+Meet legal, accounting, or tax requirements.
+Resolve disputes and enforce our agreements.
+When no longer required, your personal data will be securely deleted or anonymized.
+5. Your GDPR Rights
+If GDPR applies to you, you have the right to:
+Access the personal data we hold about you.
+Request correction of inaccurate or incomplete data.
+Request deletion of your personal data ("Right to be Forgotten"), subject to legal obligations.
+Restrict or object to certain types of processing.
+Request transfer of your personal data (data portability), where applicable.
+Withdraw your consent at any time where processing is based on consent.
+Lodge a complaint with your local data protection authority.
+6. Cookies and Analytics
+Our website may use cookies and analytics tools to improve functionality, understand visitor behaviour, and enhance user experience.
+Where required by law, you will be asked to provide your consent before non-essential cookies are placed on your device.
+7. International Data Transfers
+As Camp Sambhar Resort is based in India, your personal information may be processed and stored in India or in other countries where our trusted service providers operate. We take reasonable measures to ensure that your personal data is protected during such transfers.
+8. Third-Party Services
+Our website may use trusted third-party services, including:
+Online booking engines
+Payment gateways
+Google Maps
+Google Analytics
+Email communication services
+These providers process data in accordance with their own privacy policies and applicable data protection laws.
+9. Data Security
+We implement appropriate technical and organizational measures to protect personal information against unauthorized access, alteration, disclosure, or destruction.
+10. Contact Us
+If you have any questions regarding this GDPR Privacy Notice or wish to exercise your data protection rights, please contact:
+Camp Sambhar Resort
+Sambhar Lake, Rajasthan, India
+Email: pr@campsambhar.com
+Phone: +91- 9414991122

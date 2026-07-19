@@ -1,0 +1,203 @@
+
+### xl/worksheets/sheet1.xml
+SALT BOX
+RESTAURANT MENU
+S.NO. | ITEM CATEGORY | ITEM NAME | PRICE
+VEG MENU
+1.0 | SOUP | Tomato Soup | 150.0
+2 | Hot & Sour Soup | 140.0
+3 | Manchow Soup | 160.0
+4 | Lemon Coriander Soup | 150.0
+5 | APPETIZER AND SNACKS | Veg. Pakoda | 180.0
+6 | Pyaz Pakoda | 150.0
+7 | Paneer Pakoda | 210.0
+8 | Plain Meggie | 125.0
+9 | Cheese Meggie | 200.0
+10 | Vegetable Masala Meggie | 180.0
+11 | Veg. Sandwich | 180.0
+12 | Veg. Grilled Sandwich | 220.0
+13 | Bombay Masala Sandwich | 250.0
+14 | Cheese Sandwich | 160.0
+15 | French Fries | 200.0
+16 | Peri Peri French Fries | 230.0
+17 | Chole Bhature | 220.0
+18 | Pav Bhaji | 220.0
+19 | TANDOORI SNACKS | Paneer Tikka | 320.0
+20 | Paneer Hariyali Tikka | 350.0
+21 | Paneer Achari Tikka | 325.0
+22 | Tandoori Alu | 380.0
+23 | Mushroom Tikka | 320.0
+24.0 | Dahi  Kabab | 350.0
+25.0 | Hara Bhara Kabab | 320.0
+26.0 | Soya Chaap Tikka | 280.0
+27.0 | SALAD & LITTLE BITES | Green Salad | 150.0
+28.0 | Onion Salad | 100.0
+29.0 | Julienne Salad | 150.0
+30 | Peanut Masala | 200.0
+31 | Masala Papad | 125.0
+32 | Steam Paper Corn | 210.0
+33 | Roasted Papad | 75.0
+34 | Egg Bhurji- DRY | 200.0
+35 | BREAKFAST | Puri Bhaji | 220.0
+36 | Poha | 180.0
+37 | Rawa Vegetable Upma | 210.0
+38 | Butter Toast | 120.0
+39 | Bread Jam | 120.0
+40 | Plain Omellete | 150.0
+41 | Masala Omellete | 180.0
+42 | Bread Omellete | 210.0
+43 | Half Fry Egg With Bread | 220.0
+44 | Alu Pyaz Paratha | 180.0
+45 | Corn-Flakes Milk | 250.0
+46 | Sprouts Salad | 250.0
+47 | Fruits Platter | 250.0
+48 | CHINESE | Veg. Noodles | 220.0
+49 | Veg. Hakka Noodles | 225.0
+50 | Chilly Garlic Noodles | 250.0
+51 | Schezwan Noodles | 250.0
+52 | Veg. Fried Rice | 200.0
+53 | Chilli Garlic Fries Rice | 220.0
+54 | Veg. Manchurian With Gravy | 250.0
+55 | Veg. Manchurian Dry | 240.0
+56 | Chilly Paneer (DRY) | 280.0
+57 | Chilly Paneer (GRAVY) | 300.0
+58 | Chilly Nutrela Chunks (DRY) | 250.0
+59 | Crispy Corn | 325.0
+60 | Honey Chilly Patato | 325.0
+61 | Chilly Patato | 280.0
+62 | Chilly Egg | 280.0
+63 | Chilly Mushroom | 310.0
+64 | Kathi Roll | 275.0
+65 | Spring Roll | 275.0
+66 | Cheese Onion Roll | 300.0
+67 | Cheese Corn Roll | 320.0
+68 | Chilly Soya Chaap | 330.0
+69 | ITALIAN | Veg. Bueger | 175.0
+70 | Cheese Burger | 200.0
+71 | Egg Bueger | 225.0
+72 | Red Sauce Pasta | 275.0
+73 | White Sauce Pasta | 315.0
+74 | Pasto Sauce Pasta | 325.0
+75 | Sweet Corn Pizza | 265.0
+76 | Farm House Pizza | 315.0
+77 | Margherita Pizza | 250.0
+78 | Camp Sambhar Pizza | 375.0
+79 | Paneer Tikka Pizza | 325.0
+80 | Mushroom Pizza | 345.0
+81 | Coc Pizza | 275.0
+82 | MAIN COURSE | Kadhai Paneer | 325.0
+83 | Paneer Lababdar | 325.0
+84 | Palak Paneer | 310.0
+85 | Matar Paneer | 310.0
+86 | Shahi Paneer | 320.0
+87 | Paneer Tikka Masala | 350.0
+88 | Paneer Butter Masala | 325.0
+89 | Paneer Handi | 350.0
+90 | Paneer Pasanda | 340.0
+91 | Kadhai Veg | 320.0
+92 | Veg Jalfrezi | 275.0
+93 | Mix Veg | 310.0
+94 | Alu Matar | 265.0
+95 | Alu Gobhi | 275.0
+96 | Dum Alu | 320.0
+97 | Alu Payaz | 310.0
+98 | Alu Shimla Mirch | 260.0
+99 | Jeera Alu | 250.0
+100 | Malai Kofta | 325.0
+101 | Bindhi Masala | 300.0
+102 | Channa Masala | 275.0
+103 | Gatta Curry | 325.0
+104 | Sev Tamator | 325.0
+105 | Sarson Ka Saag | 325.0
+106 | Kadhi Soya Chaap | 330.0
+107 | Soya Chaap Masala | 310.0
+108 | DAL & RICE | Dal Tadka | 275.0
+109 | Dhaba Dal | 290.0
+110 | Dal Fry | 265.0
+111 | Dal Palak | 275.0
+112 | Dal Makhani | 325.0
+113 | Plain Rice | 180.0
+114 | Jeera Rice | 210.0
+115 | Matar Pulao | 315.0
+116 | Veg Pulao | 325.0
+117 | Veg Biryani | 375.0
+118 | CURD & RAITA | Plain Curd | 110.0
+119 | Fry Curd | 150.0
+120 | Veg Raita | 175.0
+121 | Boondi Raita | 175.0
+122 | BREAD | Tawa Roti | 35.0
+123 | Tandoori Roti | 45.0
+124 | Butter Tawa Roti | 40.0
+125 | Butter Tandoori Roti | 50.0
+126 | Butter Naan | 75.0
+127 | Stuffed Naan | 125.0
+128 | Lachha  Paratha | 80.0
+129 | Makka Roti | 150.0
+130 | Missi Roti | 80.0
+131 | PARATHA SPECIAL | ALu Pyaz Paratha | 180.0
+132 | Pyaz Paratha | 160.0
+133 | Paneer Pyaz Paratha | 210.0
+134 | Mix Veg Paratha | 200.0
+135 | Gobhi Paratha | 220.0
+136 | Methi Paratha | 180.0
+137 | Rice Paratha | 150.0
+138 | Plain Paratha | 110.0
+139 | BEVERAGES | Mineral Water | 20.0
+140 | Soda Water | 80.0
+141 | Tea | 65.0
+142 | Masala Tea | 95.0
+143 | Green Tea | 80.0
+144 | Lemon Tea | 95.0
+145 | Black Tea | 90.0
+146 | Ice Tea | 150.0
+147 | Hot Coffee | 125.0
+148 | Cold Coffee | 175.0
+149 | Cold Coffee With Ice-Cream | 200.0
+150 | Fresh Lime Soda | 125.0
+151 | Nimbu Sikanji | 100.0
+152 | Hot Milk | 125.0
+153 | Chocolate Milk | 150.0
+154 | Sweet Lassi | 150.0
+155 | Salted Lassi | 125.0
+156 | Butter MIlk | 75.0
+157 | Milk Rose | 150.0
+158 | Soft Drink | 70.0
+159 | Packed Fresh Juice | 150.0
+160 | Blue Lagoon Mojito | 210.0
+161 | Lemon Mojito | 175.0
+162 | SHAKES | Chocolate Shake | 200.0
+163 | Oreo Shake | 210.0
+164 | Kit Kat Shake | 220.0
+165 | Banana Shake | 175.0
+166 | Mirinda Shake | 175.0
+167 | Mango Shake | 200.0
+168 | Strawberry Shake | 210.0
+169 | DESSERT | Gulab Jamun-2PIECE | 120.0
+170 | Gulab Jamun With Ice Cream | 180.0
+171 | Ice-Ceam (2 SCOOPS) | 120.0
+172 | Gajar Ka Halwa | 220.0
+173 | Suji Ka Halwa | 160.0
+174 | Kheer (RICE) | 190.0
+175 | kheer (SABUDANA) | 210.0
+176 | THALIS | MINI THALI | 350.0
+177 | SPECIAL THALI | 499.0
+178 | CAMP SAMBHAR THALI | 625.0
+NON- VEG MENU
+1.0 | SNACKS | Tandoori Chicken | 550.0
+2 | Chicken Tikka | 600.0
+3 | Chicken Malai Tikka | 650.0
+4 | Chicken Seekh Kabab | 425.0
+5 | Mutton Seekh Kabab | 650.0
+6 | Chilly Chicken | 525.0
+7 | MAIN - COURSE | Butter Chicken | 680.0
+8 | Chicken Curry | 580.0
+9 | Kadhai Chicken | 610.0
+10 | Chicken Labadar | 660.0
+11 | Chicken Rara Masala | 680.0
+12 | Mutton Curry | 780.0
+13 | Laal Maas | 810.0
+14 | Egg Cury | 345.0
+15 | BIRYANI | Egg Biryani | 380.0
+16 | Chicken Biryani | 510.0
+
+### xl/worksheets/sheet2.xml

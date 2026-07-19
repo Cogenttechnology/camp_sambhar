@@ -1,0 +1,1189 @@
+{
+  "categories": [
+    "Soup",
+    "Appetizer and Snacks",
+    "Tandoori Snacks",
+    "Salad & Little Bites",
+    "Breakfast",
+    "Chinese",
+    "Italian",
+    "Main Course",
+    "Dal & Rice",
+    "Curd & Raita",
+    "Bread",
+    "Paratha Special",
+    "Beverages",
+    "Shakes",
+    "Dessert",
+    "Thalis",
+    "Snacks",
+    "Main - Course",
+    "Biryani"
+  ],
+  "items": [
+    {
+      "name": "Tomato Soup",
+      "price": 150,
+      "category": "Soup",
+      "veg": true
+    },
+    {
+      "name": "Hot & Sour Soup",
+      "price": 140,
+      "category": "Soup",
+      "veg": true
+    },
+    {
+      "name": "Manchow Soup",
+      "price": 160,
+      "category": "Soup",
+      "veg": true
+    },
+    {
+      "name": "Lemon Coriander Soup",
+      "price": 150,
+      "category": "Soup",
+      "veg": true
+    },
+    {
+      "name": "Veg. Pakoda",
+      "price": 180,
+      "category": "Appetizer and Snacks",
+      "veg": true
+    },
+    {
+      "name": "Pyaz Pakoda",
+      "price": 150,
+      "category": "Appetizer and Snacks",
+      "veg": true
+    },
+    {
+      "name": "Paneer Pakoda",
+      "price": 210,
+      "category": "Appetizer and Snacks",
+      "veg": true
+    },
+    {
+      "name": "Plain Meggie",
+      "price": 125,
+      "category": "Appetizer and Snacks",
+      "veg": true
+    },
+    {
+      "name": "Cheese Meggie",
+      "price": 200,
+      "category": "Appetizer and Snacks",
+      "veg": true
+    },
+    {
+      "name": "Vegetable Masala Meggie",
+      "price": 180,
+      "category": "Appetizer and Snacks",
+      "veg": true
+    },
+    {
+      "name": "Veg. Sandwich",
+      "price": 180,
+      "category": "Appetizer and Snacks",
+      "veg": true
+    },
+    {
+      "name": "Veg. Grilled Sandwich",
+      "price": 220,
+      "category": "Appetizer and Snacks",
+      "veg": true
+    },
+    {
+      "name": "Bombay Masala Sandwich",
+      "price": 250,
+      "category": "Appetizer and Snacks",
+      "veg": true
+    },
+    {
+      "name": "Cheese Sandwich",
+      "price": 160,
+      "category": "Appetizer and Snacks",
+      "veg": true
+    },
+    {
+      "name": "French Fries",
+      "price": 200,
+      "category": "Appetizer and Snacks",
+      "veg": true
+    },
+    {
+      "name": "Peri Peri French Fries",
+      "price": 230,
+      "category": "Appetizer and Snacks",
+      "veg": true
+    },
+    {
+      "name": "Chole Bhature",
+      "price": 220,
+      "category": "Appetizer and Snacks",
+      "veg": true
+    },
+    {
+      "name": "Pav Bhaji",
+      "price": 220,
+      "category": "Appetizer and Snacks",
+      "veg": true
+    },
+    {
+      "name": "Paneer Tikka",
+      "price": 320,
+      "category": "Tandoori Snacks",
+      "veg": true
+    },
+    {
+      "name": "Paneer Hariyali Tikka",
+      "price": 350,
+      "category": "Tandoori Snacks",
+      "veg": true
+    },
+    {
+      "name": "Paneer Achari Tikka",
+      "price": 325,
+      "category": "Tandoori Snacks",
+      "veg": true
+    },
+    {
+      "name": "Tandoori Alu",
+      "price": 380,
+      "category": "Tandoori Snacks",
+      "veg": true
+    },
+    {
+      "name": "Mushroom Tikka",
+      "price": 320,
+      "category": "Tandoori Snacks",
+      "veg": true
+    },
+    {
+      "name": "Dahi Kabab",
+      "price": 350,
+      "category": "Tandoori Snacks",
+      "veg": true
+    },
+    {
+      "name": "Hara Bhara Kabab",
+      "price": 320,
+      "category": "Tandoori Snacks",
+      "veg": true
+    },
+    {
+      "name": "Soya Chaap Tikka",
+      "price": 280,
+      "category": "Tandoori Snacks",
+      "veg": true
+    },
+    {
+      "name": "Green Salad",
+      "price": 150,
+      "category": "Salad & Little Bites",
+      "veg": true
+    },
+    {
+      "name": "Onion Salad",
+      "price": 100,
+      "category": "Salad & Little Bites",
+      "veg": true
+    },
+    {
+      "name": "Julienne Salad",
+      "price": 150,
+      "category": "Salad & Little Bites",
+      "veg": true
+    },
+    {
+      "name": "Peanut Masala",
+      "price": 200,
+      "category": "Salad & Little Bites",
+      "veg": true
+    },
+    {
+      "name": "Masala Papad",
+      "price": 125,
+      "category": "Salad & Little Bites",
+      "veg": true
+    },
+    {
+      "name": "Steam Paper Corn",
+      "price": 210,
+      "category": "Salad & Little Bites",
+      "veg": true
+    },
+    {
+      "name": "Roasted Papad",
+      "price": 75,
+      "category": "Salad & Little Bites",
+      "veg": true
+    },
+    {
+      "name": "Egg Bhurji- DRY",
+      "price": 200,
+      "category": "Salad & Little Bites",
+      "veg": true
+    },
+    {
+      "name": "Puri Bhaji",
+      "price": 220,
+      "category": "Breakfast",
+      "veg": true
+    },
+    {
+      "name": "Poha",
+      "price": 180,
+      "category": "Breakfast",
+      "veg": true
+    },
+    {
+      "name": "Rawa Vegetable Upma",
+      "price": 210,
+      "category": "Breakfast",
+      "veg": true
+    },
+    {
+      "name": "Butter Toast",
+      "price": 120,
+      "category": "Breakfast",
+      "veg": true
+    },
+    {
+      "name": "Bread Jam",
+      "price": 120,
+      "category": "Breakfast",
+      "veg": true
+    },
+    {
+      "name": "Plain Omellete",
+      "price": 150,
+      "category": "Breakfast",
+      "veg": true
+    },
+    {
+      "name": "Masala Omellete",
+      "price": 180,
+      "category": "Breakfast",
+      "veg": true
+    },
+    {
+      "name": "Bread Omellete",
+      "price": 210,
+      "category": "Breakfast",
+      "veg": true
+    },
+    {
+      "name": "Half Fry Egg With Bread",
+      "price": 220,
+      "category": "Breakfast",
+      "veg": true
+    },
+    {
+      "name": "Alu Pyaz Paratha",
+      "price": 180,
+      "category": "Breakfast",
+      "veg": true
+    },
+    {
+      "name": "Corn-Flakes Milk",
+      "price": 250,
+      "category": "Breakfast",
+      "veg": true
+    },
+    {
+      "name": "Sprouts Salad",
+      "price": 250,
+      "category": "Breakfast",
+      "veg": true
+    },
+    {
+      "name": "Fruits Platter",
+      "price": 250,
+      "category": "Breakfast",
+      "veg": true
+    },
+    {
+      "name": "Veg. Noodles",
+      "price": 220,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Veg. Hakka Noodles",
+      "price": 225,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Chilly Garlic Noodles",
+      "price": 250,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Schezwan Noodles",
+      "price": 250,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Veg. Fried Rice",
+      "price": 200,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Chilli Garlic Fries Rice",
+      "price": 220,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Veg. Manchurian With Gravy",
+      "price": 250,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Veg. Manchurian Dry",
+      "price": 240,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Chilly Paneer (DRY)",
+      "price": 280,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Chilly Paneer (GRAVY)",
+      "price": 300,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Chilly Nutrela Chunks (DRY)",
+      "price": 250,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Crispy Corn",
+      "price": 325,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Honey Chilly Patato",
+      "price": 325,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Chilly Patato",
+      "price": 280,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Chilly Egg",
+      "price": 280,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Chilly Mushroom",
+      "price": 310,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Kathi Roll",
+      "price": 275,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Spring Roll",
+      "price": 275,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Cheese Onion Roll",
+      "price": 300,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Cheese Corn Roll",
+      "price": 320,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Chilly Soya Chaap",
+      "price": 330,
+      "category": "Chinese",
+      "veg": true
+    },
+    {
+      "name": "Veg. Bueger",
+      "price": 175,
+      "category": "Italian",
+      "veg": true
+    },
+    {
+      "name": "Cheese Burger",
+      "price": 200,
+      "category": "Italian",
+      "veg": true
+    },
+    {
+      "name": "Egg Bueger",
+      "price": 225,
+      "category": "Italian",
+      "veg": true
+    },
+    {
+      "name": "Red Sauce Pasta",
+      "price": 275,
+      "category": "Italian",
+      "veg": true
+    },
+    {
+      "name": "White Sauce Pasta",
+      "price": 315,
+      "category": "Italian",
+      "veg": true
+    },
+    {
+      "name": "Pasto Sauce Pasta",
+      "price": 325,
+      "category": "Italian",
+      "veg": true
+    },
+    {
+      "name": "Sweet Corn Pizza",
+      "price": 265,
+      "category": "Italian",
+      "veg": true
+    },
+    {
+      "name": "Farm House Pizza",
+      "price": 315,
+      "category": "Italian",
+      "veg": true
+    },
+    {
+      "name": "Margherita Pizza",
+      "price": 250,
+      "category": "Italian",
+      "veg": true
+    },
+    {
+      "name": "Camp Sambhar Pizza",
+      "price": 375,
+      "category": "Italian",
+      "veg": true
+    },
+    {
+      "name": "Paneer Tikka Pizza",
+      "price": 325,
+      "category": "Italian",
+      "veg": true
+    },
+    {
+      "name": "Mushroom Pizza",
+      "price": 345,
+      "category": "Italian",
+      "veg": true
+    },
+    {
+      "name": "Coc Pizza",
+      "price": 275,
+      "category": "Italian",
+      "veg": true
+    },
+    {
+      "name": "Kadhai Paneer",
+      "price": 325,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Paneer Lababdar",
+      "price": 325,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Palak Paneer",
+      "price": 310,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Matar Paneer",
+      "price": 310,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Shahi Paneer",
+      "price": 320,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Paneer Tikka Masala",
+      "price": 350,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Paneer Butter Masala",
+      "price": 325,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Paneer Handi",
+      "price": 350,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Paneer Pasanda",
+      "price": 340,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Kadhai Veg",
+      "price": 320,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Veg Jalfrezi",
+      "price": 275,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Mix Veg",
+      "price": 310,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Alu Matar",
+      "price": 265,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Alu Gobhi",
+      "price": 275,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Dum Alu",
+      "price": 320,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Alu Payaz",
+      "price": 310,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Alu Shimla Mirch",
+      "price": 260,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Jeera Alu",
+      "price": 250,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Malai Kofta",
+      "price": 325,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Bindhi Masala",
+      "price": 300,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Channa Masala",
+      "price": 275,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Gatta Curry",
+      "price": 325,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Sev Tamator",
+      "price": 325,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Sarson Ka Saag",
+      "price": 325,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Kadhi Soya Chaap",
+      "price": 330,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Soya Chaap Masala",
+      "price": 310,
+      "category": "Main Course",
+      "veg": true
+    },
+    {
+      "name": "Dal Tadka",
+      "price": 275,
+      "category": "Dal & Rice",
+      "veg": true
+    },
+    {
+      "name": "Dhaba Dal",
+      "price": 290,
+      "category": "Dal & Rice",
+      "veg": true
+    },
+    {
+      "name": "Dal Fry",
+      "price": 265,
+      "category": "Dal & Rice",
+      "veg": true
+    },
+    {
+      "name": "Dal Palak",
+      "price": 275,
+      "category": "Dal & Rice",
+      "veg": true
+    },
+    {
+      "name": "Dal Makhani",
+      "price": 325,
+      "category": "Dal & Rice",
+      "veg": true
+    },
+    {
+      "name": "Plain Rice",
+      "price": 180,
+      "category": "Dal & Rice",
+      "veg": true
+    },
+    {
+      "name": "Jeera Rice",
+      "price": 210,
+      "category": "Dal & Rice",
+      "veg": true
+    },
+    {
+      "name": "Matar Pulao",
+      "price": 315,
+      "category": "Dal & Rice",
+      "veg": true
+    },
+    {
+      "name": "Veg Pulao",
+      "price": 325,
+      "category": "Dal & Rice",
+      "veg": true
+    },
+    {
+      "name": "Veg Biryani",
+      "price": 375,
+      "category": "Dal & Rice",
+      "veg": true
+    },
+    {
+      "name": "Plain Curd",
+      "price": 110,
+      "category": "Curd & Raita",
+      "veg": true
+    },
+    {
+      "name": "Fry Curd",
+      "price": 150,
+      "category": "Curd & Raita",
+      "veg": true
+    },
+    {
+      "name": "Veg Raita",
+      "price": 175,
+      "category": "Curd & Raita",
+      "veg": true
+    },
+    {
+      "name": "Boondi Raita",
+      "price": 175,
+      "category": "Curd & Raita",
+      "veg": true
+    },
+    {
+      "name": "Tawa Roti",
+      "price": 35,
+      "category": "Bread",
+      "veg": true
+    },
+    {
+      "name": "Tandoori Roti",
+      "price": 45,
+      "category": "Bread",
+      "veg": true
+    },
+    {
+      "name": "Butter Tawa Roti",
+      "price": 40,
+      "category": "Bread",
+      "veg": true
+    },
+    {
+      "name": "Butter Tandoori Roti",
+      "price": 50,
+      "category": "Bread",
+      "veg": true
+    },
+    {
+      "name": "Butter Naan",
+      "price": 75,
+      "category": "Bread",
+      "veg": true
+    },
+    {
+      "name": "Stuffed Naan",
+      "price": 125,
+      "category": "Bread",
+      "veg": true
+    },
+    {
+      "name": "Lachha Paratha",
+      "price": 80,
+      "category": "Bread",
+      "veg": true
+    },
+    {
+      "name": "Makka Roti",
+      "price": 150,
+      "category": "Bread",
+      "veg": true
+    },
+    {
+      "name": "Missi Roti",
+      "price": 80,
+      "category": "Bread",
+      "veg": true
+    },
+    {
+      "name": "ALu Pyaz Paratha",
+      "price": 180,
+      "category": "Paratha Special",
+      "veg": true
+    },
+    {
+      "name": "Pyaz Paratha",
+      "price": 160,
+      "category": "Paratha Special",
+      "veg": true
+    },
+    {
+      "name": "Paneer Pyaz Paratha",
+      "price": 210,
+      "category": "Paratha Special",
+      "veg": true
+    },
+    {
+      "name": "Mix Veg Paratha",
+      "price": 200,
+      "category": "Paratha Special",
+      "veg": true
+    },
+    {
+      "name": "Gobhi Paratha",
+      "price": 220,
+      "category": "Paratha Special",
+      "veg": true
+    },
+    {
+      "name": "Methi Paratha",
+      "price": 180,
+      "category": "Paratha Special",
+      "veg": true
+    },
+    {
+      "name": "Rice Paratha",
+      "price": 150,
+      "category": "Paratha Special",
+      "veg": true
+    },
+    {
+      "name": "Plain Paratha",
+      "price": 110,
+      "category": "Paratha Special",
+      "veg": true
+    },
+    {
+      "name": "Mineral Water",
+      "price": 20,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Soda Water",
+      "price": 80,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Tea",
+      "price": 65,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Masala Tea",
+      "price": 95,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Green Tea",
+      "price": 80,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Lemon Tea",
+      "price": 95,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Black Tea",
+      "price": 90,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Ice Tea",
+      "price": 150,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Hot Coffee",
+      "price": 125,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Cold Coffee",
+      "price": 175,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Cold Coffee With Ice-Cream",
+      "price": 200,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Fresh Lime Soda",
+      "price": 125,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Nimbu Sikanji",
+      "price": 100,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Hot Milk",
+      "price": 125,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Chocolate Milk",
+      "price": 150,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Sweet Lassi",
+      "price": 150,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Salted Lassi",
+      "price": 125,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Butter MIlk",
+      "price": 75,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Milk Rose",
+      "price": 150,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Soft Drink",
+      "price": 70,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Packed Fresh Juice",
+      "price": 150,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Blue Lagoon Mojito",
+      "price": 210,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Lemon Mojito",
+      "price": 175,
+      "category": "Beverages",
+      "veg": true
+    },
+    {
+      "name": "Chocolate Shake",
+      "price": 200,
+      "category": "Shakes",
+      "veg": true
+    },
+    {
+      "name": "Oreo Shake",
+      "price": 210,
+      "category": "Shakes",
+      "veg": true
+    },
+    {
+      "name": "Kit Kat Shake",
+      "price": 220,
+      "category": "Shakes",
+      "veg": true
+    },
+    {
+      "name": "Banana Shake",
+      "price": 175,
+      "category": "Shakes",
+      "veg": true
+    },
+    {
+      "name": "Mirinda Shake",
+      "price": 175,
+      "category": "Shakes",
+      "veg": true
+    },
+    {
+      "name": "Mango Shake",
+      "price": 200,
+      "category": "Shakes",
+      "veg": true
+    },
+    {
+      "name": "Strawberry Shake",
+      "price": 210,
+      "category": "Shakes",
+      "veg": true
+    },
+    {
+      "name": "Gulab Jamun-2PIECE",
+      "price": 120,
+      "category": "Dessert",
+      "veg": true
+    },
+    {
+      "name": "Gulab Jamun With Ice Cream",
+      "price": 180,
+      "category": "Dessert",
+      "veg": true
+    },
+    {
+      "name": "Ice-Ceam (2 SCOOPS)",
+      "price": 120,
+      "category": "Dessert",
+      "veg": true
+    },
+    {
+      "name": "Gajar Ka Halwa",
+      "price": 220,
+      "category": "Dessert",
+      "veg": true
+    },
+    {
+      "name": "Suji Ka Halwa",
+      "price": 160,
+      "category": "Dessert",
+      "veg": true
+    },
+    {
+      "name": "Kheer (RICE)",
+      "price": 190,
+      "category": "Dessert",
+      "veg": true
+    },
+    {
+      "name": "kheer (SABUDANA)",
+      "price": 210,
+      "category": "Dessert",
+      "veg": true
+    },
+    {
+      "name": "MINI THALI",
+      "price": 350,
+      "category": "Thalis",
+      "veg": true
+    },
+    {
+      "name": "SPECIAL THALI",
+      "price": 499,
+      "category": "Thalis",
+      "veg": true
+    },
+    {
+      "name": "CAMP SAMBHAR THALI",
+      "price": 625,
+      "category": "Thalis",
+      "veg": true
+    },
+    {
+      "name": "Tandoori Chicken",
+      "price": 550,
+      "category": "Snacks",
+      "veg": false
+    },
+    {
+      "name": "Chicken Tikka",
+      "price": 600,
+      "category": "Snacks",
+      "veg": false
+    },
+    {
+      "name": "Chicken Malai Tikka",
+      "price": 650,
+      "category": "Snacks",
+      "veg": false
+    },
+    {
+      "name": "Chicken Seekh Kabab",
+      "price": 425,
+      "category": "Snacks",
+      "veg": false
+    },
+    {
+      "name": "Mutton Seekh Kabab",
+      "price": 650,
+      "category": "Snacks",
+      "veg": false
+    },
+    {
+      "name": "Chilly Chicken",
+      "price": 525,
+      "category": "Snacks",
+      "veg": false
+    },
+    {
+      "name": "Butter Chicken",
+      "price": 680,
+      "category": "Main - Course",
+      "veg": false
+    },
+    {
+      "name": "Chicken Curry",
+      "price": 580,
+      "category": "Main - Course",
+      "veg": false
+    },
+    {
+      "name": "Kadhai Chicken",
+      "price": 610,
+      "category": "Main - Course",
+      "veg": false
+    },
+    {
+      "name": "Chicken Labadar",
+      "price": 660,
+      "category": "Main - Course",
+      "veg": false
+    },
+    {
+      "name": "Chicken Rara Masala",
+      "price": 680,
+      "category": "Main - Course",
+      "veg": false
+    },
+    {
+      "name": "Mutton Curry",
+      "price": 780,
+      "category": "Main - Course",
+      "veg": false
+    },
+    {
+      "name": "Laal Maas",
+      "price": 810,
+      "category": "Main - Course",
+      "veg": false
+    },
+    {
+      "name": "Egg Cury",
+      "price": 345,
+      "category": "Main - Course",
+      "veg": false
+    },
+    {
+      "name": "Egg Biryani",
+      "price": 380,
+      "category": "Biryani",
+      "veg": false
+    },
+    {
+      "name": "Chicken Biryani",
+      "price": 510,
+      "category": "Biryani",
+      "veg": false
+    }
+  ]
+}

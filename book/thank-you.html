@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thank You — We’ve Got Your Enquiry | Camp Sambhar Resort</title>
+<meta name="description" content="Thank you for your enquiry. The Camp Sambhar Resort team will contact you shortly with availability and best direct rates.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/logo.png">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body class="ty-body">
+
+<div class="ty-bg" style="background-image:url('assets/img/flamingos-flight.jpg')"></div>
+<div class="ty-scrim"></div>
+
+<main class="ty-wrap">
+  <div class="ty-card">
+    <img src="assets/img/logo.png" alt="Camp Sambhar Resort" class="ty-logo">
+
+    <div class="success-tick ty-tick">✓</div>
+
+    <h1 class="ty-title">Thank you — we’ve got your enquiry</h1>
+    <p class="ty-sub">
+      Our team will call you shortly with availability and our
+      <strong>best direct rates</strong>. Most enquiries get a reply within 2 hours
+      during office hours (9:00 AM – 6:00 PM).
+    </p>
+
+    <!-- Fastest path to a conversation while the lead is warm -->
+    <div class="ty-actions">
+      <a href="https://wa.me/919414991122?text=Hi%20Camp%20Sambhar%2C%20I%20just%20submitted%20an%20enquiry%20on%20your%20website."
+         target="_blank" rel="noopener" class="btn btn-wa btn-lg" id="tyWa">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1s-.7 1-.9 1.2c-.2.2-.3.2-.6.1a8 8 0 01-2.4-1.5 9 9 0 01-1.6-2c-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4z"/><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1112 20.2z"/></svg>
+        Chat on WhatsApp
+      </a>
+      <a href="tel:+919414991122" class="btn btn-outline-brand btn-lg">Call +91 94149 91122</a>
+    </div>
+
+    <!-- Keep the lead warm with what they're about to experience -->
+    <ul class="ty-points list-unstyled">
+      <li>🦩 Flamingo season runs November – February</li>
+      <li>🔭 Stargazing and birding are included with every stay</li>
+      <li>📍 Just 2.5 hours from Jaipur</li>
+    </ul>
+
+    <p class="ty-redirect">
+      Taking you back to our website in <strong><span id="count">5</span></strong> seconds…
+      <a href="index.html" id="goNow">Go now</a>
+    </p>
+  </div>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Google Ads / GA4 conversion ──
+     A dedicated thank-you URL is the cleanest conversion signal for Ads:
+     point your conversion action at /book/thank-you.html as a destination goal,
+     or keep the event fire below. Replace with your real conversion label. */
+  var GADS_CONVERSION = 'AW-XXXXXXXXX/AbC-D_efG';
+  try {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', { send_to: GADS_CONVERSION, value: 1.0, currency: 'INR' });
+      window.gtag('event', 'generate_lead', { value: 1.0, currency: 'INR' });
+    }
+    if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
+    if (window.dataLayer && window.dataLayer.push) window.dataLayer.push({ event: 'generate_lead' });
+  } catch (e) {}
+
+  /* ── Prefill WhatsApp with the details we just captured ── */
+  try {
+    var raw = sessionStorage.getItem('cs_lead');
+    if (raw) {
+      var d = JSON.parse(raw);
+      var msg =
+        'Hi Camp Sambhar, I just submitted an enquiry.%0A' +
+        'Name: ' + encodeURIComponent(d.name || '') + '%0A' +
+        'Phone: ' + encodeURIComponent(d.phone || '') + '%0A' +
+        (d.checkIn ? 'Check-in: ' + encodeURIComponent(d.checkIn) + '%0A' : '') +
+        'Guests: ' + encodeURIComponent(d.guests || '') + '%0A' +
+        'Interested in: ' + encodeURIComponent(d.interest || '');
+      var wa = document.getElementById('tyWa');
+      if (wa) wa.href = 'https://wa.me/919414991122?text=' + msg;
+      sessionStorage.removeItem('cs_lead');
+    }
+  } catch (e) {}
+
+  /* ── Countdown then redirect ──
+     Cancelled if the visitor interacts (clicking WhatsApp/Call), so we never
+     yank the page away from someone mid-action. */
+  var seconds = 5;
+  var el = document.getElementById('count');
+  var cancelled = false;
+
+  ['click', 'touchstart'].forEach(function (evt) {
+    document.querySelectorAll('.ty-actions a').forEach(function (a) {
+      a.addEventListener(evt, function () { cancelled = true; });
+    });
+  });
+
+  var timer = setInterval(function () {
+    if (cancelled) { clearInterval(timer); return; }
+    seconds -= 1;
+    if (el) el.textContent = String(Math.max(seconds, 0));
+    if (seconds <= 0) {
+      clearInterval(timer);
+      window.location.href = 'index.html';
+    }
+  }, 1000);
+})();
+</script>
+</body>
+</html>
