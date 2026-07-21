@@ -11,6 +11,17 @@ function isoDay(offsetDays = 0) {
 }
 
 /**
+ * Site Settings is the source of truth, with the env var as the fallback —
+ * the arrangement .env.example already documents. Without this the widget
+ * depended solely on a CMS field, so an unseeded database showed guests the
+ * "booking opens soon" notice even with the property ID configured in .env.
+ * NEXT_PUBLIC_ is required: this is a client component, so the value must be
+ * inlined at build time. The property ID is public (it appears in the booking
+ * URL) — no secret is being exposed.
+ */
+const ENV_PROPERTY_ID = process.env.NEXT_PUBLIC_STAYFLEXI_PROPERTY_ID || ''
+
+/**
  * Stayflexi booking. We render an availability form that opens the Stayflexi
  * booking engine — in a modal iframe when a booking URL is configured, so the
  * guest never leaves the site. Falls back to an enquiry CTA if not configured.
@@ -31,10 +42,12 @@ export function AvailabilityBar({
   // live.stayflexi.com, which does not resolve — the modal opened on a dead
   // frame for every guest. Verified: 200, and no X-Frame-Options/frame-ancestors
   // header, so it is embeddable.
+  const effectivePropertyId = propertyId || ENV_PROPERTY_ID
+
   const baseUrl =
     bookingUrl ||
-    (propertyId
-      ? `https://bookingengine.stayflexi.com/?hotelId=${encodeURIComponent(propertyId)}`
+    (effectivePropertyId
+      ? `https://bookingengine.stayflexi.com/?hotelId=${encodeURIComponent(effectivePropertyId)}`
       : null)
 
   // Escape closes the modal, and the page behind it must not scroll while open.
