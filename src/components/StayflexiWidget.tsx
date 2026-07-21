@@ -1,7 +1,21 @@
 'use client'
 
 import { useEffect, useId, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { ButtonEl } from './ui/Button'
+
+/**
+ * Renders into document.body. The widget sits inside sections that establish
+ * their own stacking contexts (transforms, overflow-hidden), which trapped the
+ * modal behind the sticky header and clipped it. Mounting at the body escapes
+ * all of that. Client-only: portals need a real DOM node.
+ */
+function Portal({ children }: { children: React.ReactNode }) {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+  if (!mounted) return null
+  return createPortal(children, document.body)
+}
 
 /** Today and tomorrow as yyyy-mm-dd, for sensible date-input minimums. */
 function isoDay(offsetDays = 0) {
@@ -115,57 +129,77 @@ export function AvailabilityBar({
       </div>
 
       {open && resolvedUrl && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-charcoal/70 p-4"
-          role="dialog"
-          aria-modal="true"
-          onClick={() => setOpen(false)}
-        >
+        <Portal>
           <div
-            className="relative h-[85vh] w-full max-w-5xl overflow-hidden rounded-2xl bg-white"
-            onClick={(e) => e.stopPropagation()}
+            className="fixed inset-0 z-[200] flex items-stretch justify-center bg-charcoal/80 backdrop-blur-sm sm:items-center sm:p-6"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Book your stay"
+            onClick={() => setOpen(false)}
           >
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              className="absolute right-3 top-3 z-10 rounded-full bg-charcoal px-3 py-1 text-sm text-white"
-              aria-label="Close booking"
+            <div
+              className="relative flex h-[100dvh] w-full flex-col bg-white shadow-2xl sm:h-[92dvh] sm:max-w-6xl sm:rounded-2xl"
+              onClick={(e) => e.stopPropagation()}
             >
-              Close
-            </button>
-            <iframe
-              src={resolvedUrl}
-              title="Book your stay"
-              className="h-full w-full border-0"
-              loading="lazy"
-            />
+              {/* Branded bar: the engine's own chrome is generic, so this keeps
+                  the modal recognisably Camp Sambhar. */}
+              <div className="flex flex-shrink-0 items-center justify-between gap-4 border-b border-sand-400/40 bg-ivory px-5 py-3.5 sm:rounded-t-2xl">
+                <p className="font-[family-name:var(--font-serif)] text-lg leading-none text-charcoal">
+                  Book your stay
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setOpen(false)}
+                  className="-mr-1 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm text-charcoal/70 transition-colors hover:bg-charcoal/5 hover:text-charcoal"
+                  aria-label="Close booking"
+                >
+                  Close
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 5l14 14M19 5L5 19" strokeLinecap="round" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* min-h-0 lets the iframe shrink inside the flex column instead of
+                  overflowing it, which is what clipped the engine's footer. */}
+              <iframe
+                src={resolvedUrl}
+                title="Book your stay"
+                className="min-h-0 w-full flex-1 border-0 sm:rounded-b-2xl"
+              />
+            </div>
           </div>
-        </div>
+        </Portal>
       )}
 
       {/* Keyed off resolvedUrl, not `configured` — a configured-but-unusable URL
           must still show the enquiry fallback rather than a dead button. */}
       {open && !resolvedUrl && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-charcoal/70 p-4"
-          role="dialog"
-          aria-modal="true"
-          onClick={() => setOpen(false)}
-        >
-          <div className="max-w-md rounded-2xl bg-white p-8 text-center text-charcoal">
-            <p className="font-[family-name:var(--font-serif)] text-2xl">Booking opens soon</p>
-            <p className="mt-3 text-muted">
-              Our online booking engine is being connected. In the meantime, send us an enquiry and
-              we’ll hold your dates.
-            </p>
-            <a
-              href="/contact"
-              className="mt-6 inline-block rounded-full bg-red-500 px-6 py-3 text-sm text-white hover:bg-red-600"
+        <Portal>
+          <div
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-charcoal/80 p-4 backdrop-blur-sm"
+            role="dialog"
+            aria-modal="true"
+            onClick={() => setOpen(false)}
+          >
+            <div
+              className="max-w-md rounded-2xl bg-white p-8 text-center text-charcoal shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
             >
-              Send an enquiry
-            </a>
+              <p className="font-[family-name:var(--font-serif)] text-2xl">Booking opens soon</p>
+              <p className="mt-3 text-muted">
+                Our online booking engine is being connected. In the meantime, send us an enquiry
+                and we’ll hold your dates.
+              </p>
+              <a
+                href="/contact"
+                className="mt-6 inline-block rounded-full bg-red-500 px-6 py-3 text-sm text-white hover:bg-red-600"
+              >
+                Send an enquiry
+              </a>
+            </div>
           </div>
-        </div>
+        </Portal>
       )}
 
     </div>
