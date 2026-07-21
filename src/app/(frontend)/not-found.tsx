@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function NotFound() {
   return (
-    <section className="flex min-h-[70vh] items-center bg-ivory">
+    <section className="flex min-h-[70vh] items-center bg-blush">
       <div className="container-page text-center">
         <p className="eyebrow mb-3">Lost in the salt flats</p>
         <h1 className="font-[family-name:var(--font-serif)] text-[length:var(--text-display)]">

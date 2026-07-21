@@ -49,7 +49,7 @@ export function EnquiryPopup() {
           onClick={close}
         >
           <div
-            className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-ivory p-6 sm:p-8"
+            className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-blush p-6 sm:p-8"
             onClick={(e) => e.stopPropagation()}
           >
             <button

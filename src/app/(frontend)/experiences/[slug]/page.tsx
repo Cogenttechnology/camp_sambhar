@@ -90,7 +90,7 @@ export default async function ExperiencePage({ params }: { params: Promise<{ slu
         ])}
       />
 
-      <section className="relative overflow-hidden bg-ivory py-[var(--spacing-section)]">
+      <section className="relative overflow-hidden bg-blush py-[var(--spacing-section)]">
         <PaperTexture opacity={0.4} />
         <TopoPattern opacity={0.05} />
         <ArtAccent art={accentA} className="-left-20 top-12 hidden w-60 lg:block" opacity={0.28} />

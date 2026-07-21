@@ -91,7 +91,7 @@ export default async function StayPage() {
       </section>
 
       {/* ── Amenities strip ── */}
-      <section className="relative overflow-hidden bg-ivory py-14">
+      <section className="relative overflow-hidden bg-blush py-14">
         <PaperTexture opacity={0.4} />
         <div className="container-page relative">
           <ul className="grid grid-cols-2 gap-x-6 gap-y-7 sm:grid-cols-3 lg:grid-cols-6">
@@ -108,7 +108,7 @@ export default async function StayPage() {
       </section>
 
       {/* ── Rooms ── */}
-      <section className="relative overflow-hidden bg-ivory pb-[var(--spacing-section)]">
+      <section className="relative overflow-hidden bg-blush pb-[var(--spacing-section)]">
         <TopoPattern opacity={0.05} />
         <ArtAccent art="acacia-khejri" className="-left-16 top-24 hidden w-64 lg:block" opacity={0.35} />
         <ArtAccent art="grass" className="-left-12 bottom-1/4 hidden w-48 lg:block" opacity={0.4} />
@@ -264,7 +264,7 @@ export default async function StayPage() {
       )}
 
       {/* ── Policies note ── */}
-      <section className="bg-ivory pb-[var(--spacing-section)]">
+      <section className="bg-blush pb-[var(--spacing-section)]">
         <div className="container-page max-w-3xl text-center">
           <h2 className="font-[family-name:var(--font-serif)] text-3xl">Before you book</h2>
           <p className="mt-4 text-muted">

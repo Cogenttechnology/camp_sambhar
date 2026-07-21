@@ -94,7 +94,7 @@ export default async function AboutSubPage({ params }: { params: Promise<{ slug:
         </div>
       </div>
 
-      <section className="relative overflow-hidden bg-ivory pb-[var(--spacing-section)] pt-6">
+      <section className="relative overflow-hidden bg-blush pb-[var(--spacing-section)] pt-6">
         <PaperTexture opacity={0.3} />
         <div className="container-page relative">
           <Ornament className="mb-8 text-charcoal" />

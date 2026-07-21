@@ -35,7 +35,7 @@ export default async function ContactPage() {
 
       <TornEdge fill="var(--color-ivory)" />
 
-      <section className="relative overflow-hidden bg-ivory pb-[var(--spacing-section)] pt-10">
+      <section className="relative overflow-hidden bg-blush pb-[var(--spacing-section)] pt-10">
         <PaperTexture opacity={0.35} />
         <TopoPattern opacity={0.05} />
         <ArtAccent art="flamingo" className="-left-8 bottom-16 hidden w-40 lg:block" opacity={0.3} />

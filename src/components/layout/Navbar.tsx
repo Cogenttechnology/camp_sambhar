@@ -35,7 +35,7 @@ export function Navbar({ siteName = 'CAMP SAMBHAR' }: { siteName?: string }) {
       className={cn(
         'sticky top-0 z-50 transition-colors duration-300',
         scrolled
-          ? 'bg-ivory/95 backdrop-blur border-b border-sand-400/40'
+          ? 'bg-blush/95 backdrop-blur border-b border-sand-400/40'
           : 'bg-transparent',
       )}
     >
@@ -98,7 +98,7 @@ export function Navbar({ siteName = 'CAMP SAMBHAR' }: { siteName?: string }) {
       </nav>
 
       {open && (
-        <div className="lg:hidden bg-ivory border-t border-sand-400/40">
+        <div className="lg:hidden bg-blush border-t border-sand-400/40">
           <ul className="container-page flex flex-col gap-1 py-4">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>

@@ -43,7 +43,7 @@ export default async function BlogPage() {
 
       <TornEdge fill="var(--color-ivory)" />
 
-      <section className="relative overflow-hidden bg-ivory pb-[var(--spacing-section)] pt-10">
+      <section className="relative overflow-hidden bg-blush pb-[var(--spacing-section)] pt-10">
         <PaperTexture opacity={0.35} />
         <TopoPattern opacity={0.05} />
         <ArtAccent art="acacia-khejri" className="-right-16 bottom-10 hidden w-56 lg:block" opacity={0.28} />

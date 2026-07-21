@@ -52,7 +52,7 @@ export function PageHero({
 
   // Text-only fallback — warm ivory band with texture and a line-art accent.
   return (
-    <section className="relative overflow-hidden bg-ivory pb-14 pt-36">
+    <section className="relative overflow-hidden bg-blush pb-14 pt-36">
       <PaperTexture opacity={0.45} />
       <TopoPattern opacity={0.07} />
       <ArtAccent art={art} className="-right-8 -top-4 hidden w-64 lg:block" opacity={0.4} />

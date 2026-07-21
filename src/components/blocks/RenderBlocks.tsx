@@ -22,7 +22,7 @@ function BlockSwitch({ block }: { block: Block }) {
   switch (block.blockType) {
     case 'textBlock':
       return (
-        <section className="bg-ivory py-16">
+        <section className="bg-blush py-16">
           <div className="container-page">
             <Reveal className={block.align === 'center' ? 'mx-auto max-w-2xl text-center' : 'max-w-2xl'}>
               {block.eyebrow ? <p className="eyebrow mb-3">{block.eyebrow}</p> : null}
@@ -39,7 +39,7 @@ function BlockSwitch({ block }: { block: Block }) {
 
     case 'imageText':
       return (
-        <section className="bg-ivory py-16">
+        <section className="bg-blush py-16">
           <div className="container-page grid gap-10 lg:grid-cols-2 lg:items-center">
             <Reveal className={block.imageSide === 'right' ? 'lg:order-2' : ''}>
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
@@ -80,7 +80,7 @@ function BlockSwitch({ block }: { block: Block }) {
 
     case 'galleryBlock':
       return (
-        <section className="bg-ivory py-16">
+        <section className="bg-blush py-16">
           <div className="container-page">
             {block.heading ? (
               <h2 className="mb-6 font-[family-name:var(--font-serif)] text-3xl">{block.heading}</h2>

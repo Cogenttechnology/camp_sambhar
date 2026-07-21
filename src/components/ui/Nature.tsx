@@ -38,6 +38,39 @@ export function TopoPattern({
   )
 }
 
+/**
+ * The large white flamingo watermark from the client's stationery.
+ *
+ * Purely decorative and deliberately quiet — it sits behind content at low
+ * opacity and is hidden below `lg`, where it would crowd the text rather than
+ * frame it. Place it on a section that is `relative overflow-hidden`.
+ */
+export function FlamingoWatermark({
+  className,
+  opacity = 0.5,
+  flip = false,
+}: {
+  className?: string
+  opacity?: number
+  flip?: boolean
+}) {
+  return (
+    <Image
+      src="/illustrations/flamingo-solid.png"
+      alt=""
+      aria-hidden
+      width={800}
+      height={1200}
+      className={cn(
+        'pointer-events-none absolute select-none',
+        flip && 'scale-x-[-1]',
+        className,
+      )}
+      style={{ opacity }}
+    />
+  )
+}
+
 type Art =
   | 'flamingo'
   | 'curlew'

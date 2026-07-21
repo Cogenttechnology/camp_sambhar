@@ -71,7 +71,7 @@ export default async function ExperiencesPage() {
       </section>
 
       {/* ── Experience list ── */}
-      <section className="relative overflow-hidden bg-ivory py-[var(--spacing-section)]">
+      <section className="relative overflow-hidden bg-blush py-[var(--spacing-section)]">
         <PaperTexture opacity={0.35} />
         <TopoPattern opacity={0.05} />
 
@@ -202,7 +202,7 @@ export default async function ExperiencesPage() {
               <div className="mt-10">
                 <Link
                   href="/birds"
-                  className="inline-flex items-center gap-2 rounded-full border border-ivory/50 px-7 py-3.5 text-sm transition-colors hover:bg-ivory hover:text-charcoal"
+                  className="inline-flex items-center gap-2 rounded-full border border-ivory/50 px-7 py-3.5 text-sm transition-colors hover:bg-blush hover:text-charcoal"
                 >
                   See the full species checklist
                 </Link>
@@ -214,7 +214,7 @@ export default async function ExperiencesPage() {
       )}
 
       {/* ── CTA ── */}
-      <section className="bg-ivory pb-[var(--spacing-section)]">
+      <section className="bg-blush pb-[var(--spacing-section)]">
         <div className="container-page max-w-2xl text-center">
           <Ornament className="text-sand-500" />
           <h2 className="mt-6 font-[family-name:var(--font-serif)] text-3xl">

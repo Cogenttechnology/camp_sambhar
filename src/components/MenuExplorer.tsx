@@ -61,7 +61,7 @@ export function MenuExplorer({
   return (
     <div>
       {/* Controls */}
-      <div className="sticky top-[72px] z-30 -mx-4 mb-10 bg-ivory/95 px-4 py-4 backdrop-blur">
+      <div className="sticky top-[72px] z-30 -mx-4 mb-10 bg-blush/95 px-4 py-4 backdrop-blur">
         <div className="flex flex-wrap items-center gap-3">
           {/* Diet toggle */}
           <div className="inline-flex rounded-full border border-sand-400/60 p-1">

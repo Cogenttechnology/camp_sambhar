@@ -10,8 +10,15 @@
      Desert Sand #CBB18B · Sage #7A7B60 · Night Indigo #17253A
      Charcoal #2A2723 · White #FFFFFF */
 
-  --color-ivory: #f3ebdd; /* Salt Ivory — primary warm background */
+  --color-ivory: #f3ebdd; /* Salt Ivory — kept for light text on dark sections */
   --color-white: #ffffff;
+
+  /* Blush — the background from the client's stationery and deck.
+     A page background only: text-ivory still means "light text on a dark
+     section" in 60-odd places, so this is a separate token rather than a
+     redefinition of ivory. */
+  --color-blush: #f7cfcf;
+  --color-blush-deep: #f2a9a9; /* the card's stronger panel tone */
 
   --color-red-500: #a92b2e; /* Camp Red — primary brand / CTA */
   --color-red-600: #7d211d; /* Deep Terracotta — hover / depth */
@@ -32,8 +39,10 @@
 
   /* Semantic aliases */
   --color-ink: var(--color-charcoal);
-  --color-muted: #6f6a62;
-  --color-paper: var(--color-ivory);
+  /* Darkened from #6f6a62: on the blush background that only reached 3.78:1,
+     below the 4.5:1 minimum. #635e56 clears it on blush and ivory alike. */
+  --color-muted: #635e56;
+  --color-paper: var(--color-blush);
   --color-paper-white: var(--color-white);
   --color-night: var(--color-indigo-900);
   --color-brand: var(--color-red-500);

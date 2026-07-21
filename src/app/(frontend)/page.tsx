@@ -10,6 +10,7 @@ import { Parallax } from '../../components/ui/Parallax'
 import {
   ArtAccent,
   FieldLabel,
+  FlamingoWatermark,
   PaperTexture,
   TopoPattern,
   WaveDivider,
@@ -74,7 +75,7 @@ function Hero({ heroMedia }: { heroMedia: Room['heroImage'] | number | null | un
               </Link>
               <Link
                 href="/stay#book"
-                className="rounded-full border border-ivory/70 px-8 py-4 text-sm font-medium text-ivory transition-colors hover:bg-ivory hover:text-charcoal"
+                className="rounded-full border border-ivory/70 px-8 py-4 text-sm font-medium text-ivory transition-colors hover:bg-blush hover:text-charcoal"
               >
                 Book your stay
               </Link>
@@ -99,8 +100,13 @@ function IntroSection() {
     { icon: '/icons/binoculars.png', label: 'Guided experiences' },
   ]
   return (
-    <section className="bg-ivory py-[var(--spacing-section)]">
-      <div className="container-page grid gap-12 lg:grid-cols-2 lg:items-center">
+    <section className="relative overflow-hidden bg-blush py-[var(--spacing-section)]">
+      {/* The white flamingo from the client's stationery, used as a watermark. */}
+      {/* Far enough left that the text column never crosses it — the watermark
+          should be felt, not read through. */}
+      <FlamingoWatermark className="-left-40 bottom-0 hidden w-[26rem] xl:block" opacity={0.55} />
+
+      <div className="container-page relative grid gap-12 lg:grid-cols-2 lg:items-center">
         <Reveal>
           <FieldLabel className="mb-4 text-red-500">The Camp</FieldLabel>
           <h2 className="font-[family-name:var(--font-serif)] text-[length:var(--text-display)] leading-[var(--text-display--line-height)]">
@@ -201,7 +207,7 @@ function RoomsSection({
                   {/* Lift darker photos so they read on the red ground */}
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal/45 via-transparent to-transparent" />
                   {room.priceFrom ? (
-                    <span className="absolute right-4 top-4 rounded-full bg-ivory/95 px-4 py-1.5 text-xs font-medium text-charcoal">
+                    <span className="absolute right-4 top-4 rounded-full bg-blush/95 px-4 py-1.5 text-xs font-medium text-charcoal">
                       From ₹{room.priceFrom.toLocaleString('en-IN')}
                     </span>
                   ) : null}
@@ -234,7 +240,7 @@ function ExperiencesSection({ experiences }: { experiences: Experience[] }) {
   const [feature, ...rest] = experiences
   if (!feature) return null
   return (
-    <section className="relative overflow-hidden bg-ivory py-[var(--spacing-section)]">
+    <section className="relative overflow-hidden bg-blush py-[var(--spacing-section)]">
       <Image
         src="/illustrations/flamingo.png"
         alt=""
@@ -352,7 +358,7 @@ function BirdsSection({ photos }: { photos: Media[] }) {
 
               <Link
                 href="/birds"
-                className="mt-9 inline-flex items-center gap-2 rounded-full border border-ivory/60 px-7 py-3.5 text-sm transition-colors hover:bg-ivory hover:text-charcoal"
+                className="mt-9 inline-flex items-center gap-2 rounded-full border border-ivory/60 px-7 py-3.5 text-sm transition-colors hover:bg-blush hover:text-charcoal"
               >
                 Birds of Sambhar <Arrow />
               </Link>
@@ -419,7 +425,7 @@ function CafeSection() {
           </ul>
           <Link
             href="/cafe"
-            className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-ivory/60 px-6 py-3 text-sm transition-colors hover:bg-ivory hover:text-charcoal"
+            className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-ivory/60 px-6 py-3 text-sm transition-colors hover:bg-blush hover:text-charcoal"
           >
             View the menu <Arrow />
           </Link>
@@ -485,7 +491,7 @@ function Stars() {
       {stars.map(([x, y], i) => (
         <span
           key={i}
-          className="absolute h-1 w-1 rounded-full bg-ivory"
+          className="absolute h-1 w-1 rounded-full bg-blush"
           style={{ left: `${x}%`, top: `${y}%`, opacity: 0.3 + (i % 5) * 0.14 }}
         />
       ))}
@@ -498,7 +504,7 @@ function ReviewsSection({ reviews }: { reviews: Review[] }) {
   const avg =
     reviews.length > 0 ? (reviews.reduce((s, r) => s + (r.rating ?? 0), 0) / reviews.length).toFixed(1) : '5.0'
   return (
-    <section className="bg-ivory py-[var(--spacing-section)]">
+    <section className="bg-blush py-[var(--spacing-section)]">
       <div className="container-page">
         <div className="grid gap-10 lg:grid-cols-[auto_1fr] lg:items-start">
           <Reveal className="lg:w-56">
@@ -555,7 +561,7 @@ function RouteSection() {
     ['From Delhi', '5.5 hrs / 320 km'],
   ]
   return (
-    <section className="bg-ivory py-[var(--spacing-section)]">
+    <section className="bg-blush py-[var(--spacing-section)]">
       <div className="container-page grid gap-10 lg:grid-cols-[0.9fr_1.4fr] lg:items-center">
         <Reveal>
           <h2 className="font-[family-name:var(--font-serif)] text-[length:var(--text-display)] leading-[var(--text-display--line-height)]">
@@ -629,7 +635,7 @@ function ShowcaseSection({ photos }: { photos: { media: Media; alt: string }[] }
   const tiles = photos.slice(0, 8)
 
   return (
-    <section className="relative overflow-hidden bg-ivory py-[var(--spacing-section)]">
+    <section className="relative overflow-hidden bg-blush py-[var(--spacing-section)]">
       <PaperTexture opacity={0.3} />
       <TopoPattern opacity={0.05} />
       <ArtAccent art="grass" className="-left-12 bottom-8 hidden w-44 lg:block" opacity={0.24} />
@@ -728,7 +734,7 @@ function EnquiryStrip() {
         </p>
         <Link
           href="/contact"
-          className="rounded-full bg-ivory px-8 py-4 text-sm font-medium text-charcoal transition-colors hover:bg-white"
+          className="rounded-full bg-blush px-8 py-4 text-sm font-medium text-charcoal transition-colors hover:bg-white"
         >
           Send an enquiry
         </Link>

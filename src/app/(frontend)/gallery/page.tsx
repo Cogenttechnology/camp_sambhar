@@ -60,7 +60,7 @@ export default async function GalleryPage() {
       </section>
 
       {/* ── Albums ── */}
-      <section className="relative overflow-hidden bg-ivory py-[var(--spacing-section)]">
+      <section className="relative overflow-hidden bg-blush py-[var(--spacing-section)]">
         <PaperTexture opacity={0.35} />
         <TopoPattern opacity={0.05} />
         <ArtAccent art="flamingo" className="-left-10 top-32 hidden w-40 lg:block" opacity={0.35} />

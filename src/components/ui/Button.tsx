@@ -12,7 +12,7 @@ const variants: Record<Variant, string> = {
   outline:
     'border border-charcoal text-charcoal hover:bg-charcoal hover:text-white',
   ghost: 'text-charcoal hover:bg-sand-300/50',
-  light: 'bg-white text-charcoal hover:bg-ivory',
+  light: 'bg-white text-charcoal hover:bg-blush',
 }
 
 const sizes: Record<Size, string> = {

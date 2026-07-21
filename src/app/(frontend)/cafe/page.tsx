@@ -133,7 +133,7 @@ export default async function CafePage() {
       </section>
 
       {/* ── Intro + signature dishes ── */}
-      <section className="relative overflow-hidden bg-ivory py-[var(--spacing-section)]">
+      <section className="relative overflow-hidden bg-blush py-[var(--spacing-section)]">
         <PaperTexture opacity={0.35} />
         <ArtAccent art="grass" className="-left-10 bottom-0 hidden w-56 lg:block" opacity={0.5} />
         <div className="container-page relative">
@@ -241,7 +241,7 @@ export default async function CafePage() {
       </section>
 
       {/* ── Menu ── */}
-      <section id="menu" className="relative overflow-hidden bg-ivory pb-[var(--spacing-section)]">
+      <section id="menu" className="relative overflow-hidden bg-blush pb-[var(--spacing-section)]">
         <TopoPattern opacity={0.05} />
         <div className="container-page relative">
           <Reveal>
@@ -292,7 +292,7 @@ export default async function CafePage() {
       )}
 
       {/* ── CTA ── */}
-      <section className="relative overflow-hidden bg-ivory pb-[var(--spacing-section)]">
+      <section className="relative overflow-hidden bg-blush pb-[var(--spacing-section)]">
         <ArtAccent art="salt-crystals" className="-right-6 top-0 hidden w-64 lg:block" opacity={0.55} />
         <div className="container-page relative max-w-2xl text-center">
           <h2 className="font-[family-name:var(--font-serif)] text-3xl">Dining, your way</h2>

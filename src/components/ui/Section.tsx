@@ -9,7 +9,7 @@ type SectionProps = {
 }
 
 const tones: Record<NonNullable<SectionProps['tone']>, string> = {
-  ivory: 'bg-ivory text-charcoal',
+  ivory: 'bg-blush text-charcoal',
   white: 'bg-white text-charcoal',
   night: 'bg-indigo-900 text-ivory',
   sand: 'bg-sand-400/25 text-charcoal',

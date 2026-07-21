@@ -52,7 +52,7 @@ export default async function BirdsPage() {
       />
 
       {/* Intro copy */}
-      <section className="relative overflow-hidden bg-ivory py-[var(--spacing-section)]">
+      <section className="relative overflow-hidden bg-blush py-[var(--spacing-section)]">
         <PaperTexture opacity={0.35} />
         <ArtAccent art="curlew" className="-right-10 top-8 hidden w-52 lg:block" opacity={0.3} flip />
         <ArtAccent art="grass" className="-left-12 bottom-0 hidden w-44 lg:block" opacity={0.32} />
@@ -132,7 +132,7 @@ export default async function BirdsPage() {
       )}
 
       {/* Species checklist */}
-      <section className="relative overflow-hidden bg-ivory py-[var(--spacing-section)]">
+      <section className="relative overflow-hidden bg-blush py-[var(--spacing-section)]">
         <TopoPattern opacity={0.05} />
         <ArtAccent
           art="curlew"
@@ -171,7 +171,7 @@ export default async function BirdsPage() {
         </div>
       </section>
 
-      <OrnamentBand className="bg-ivory pb-4" opacity={0.5} />
+      <OrnamentBand className="bg-blush pb-4" opacity={0.5} />
 
       {/* Closing — night sky, so no multiply blend or the ink would vanish */}
       <section className="relative overflow-hidden bg-indigo-900 py-[var(--spacing-section)] text-ivory">

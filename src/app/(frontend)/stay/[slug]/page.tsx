@@ -77,7 +77,7 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
         ])}
       />
 
-      <section className="relative overflow-hidden bg-ivory py-[var(--spacing-section)]">
+      <section className="relative overflow-hidden bg-blush py-[var(--spacing-section)]">
         <PaperTexture opacity={0.4} />
         <TopoPattern opacity={0.05} />
         <ArtAccent

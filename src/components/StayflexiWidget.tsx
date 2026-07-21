@@ -143,7 +143,7 @@ export function AvailabilityBar({
             >
               {/* Branded bar: the engine's own chrome is generic, so this keeps
                   the modal recognisably Camp Sambhar. */}
-              <div className="flex flex-shrink-0 items-center justify-between gap-4 border-b border-sand-400/40 bg-ivory px-5 py-3.5 sm:rounded-t-2xl">
+              <div className="flex flex-shrink-0 items-center justify-between gap-4 border-b border-sand-400/40 bg-blush px-5 py-3.5 sm:rounded-t-2xl">
                 <p className="font-[family-name:var(--font-serif)] text-lg leading-none text-charcoal">
                   Book your stay
                 </p>
