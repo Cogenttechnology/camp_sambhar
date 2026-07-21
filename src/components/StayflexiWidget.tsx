@@ -69,31 +69,19 @@ export function AvailabilityBar({
     }
   }, [open])
 
-  // Carry whatever the guest typed into the engine so they don't re-enter it.
+  // No date parameters are appended, deliberately.
   //
-  // The engine's parameter names for dates are not documented and could not be
-  // recovered from its bundle, so both the snake_case and camelCase spellings
-  // are sent. hotel_id is snake_case, which makes checkin/checkout the likelier
-  // pair, but sending both is harmless: unrecognised query params are ignored,
-  // and the booking still works from the engine's own date picker either way.
-  const resolvedUrl = (() => {
-    if (!baseUrl) return null
-    try {
-      const u = new URL(baseUrl)
-      if (checkIn) {
-        u.searchParams.set('checkin', checkIn)
-        u.searchParams.set('checkIn', checkIn)
-      }
-      if (checkOut) {
-        u.searchParams.set('checkout', checkOut)
-        u.searchParams.set('checkOut', checkOut)
-      }
-      if (guests) u.searchParams.set('adults', guests)
-      return u.toString()
-    } catch {
-      return baseUrl
-    }
-  })()
+  // Passing checkin/checkout in ISO form makes the engine throw
+  // "RangeError: Invalid time value" and render nothing — the white modal this
+  // replaced. Tested in a real browser: dd-MM-yyyy and MM-dd-yyyy avoid the
+  // crash but do not pre-fill anything, showing exactly what the bare URL shows.
+  // So the parameters carry no benefit and a real risk of a blank screen.
+  //
+  // The dates the guest picks here still matter: they are passed to the engine's
+  // own picker by the guest, and the fields set expectations before the modal
+  // opens. If Stayflexi documents a supported deep-link format later, add it
+  // here — but verify it renders before shipping.
+  const resolvedUrl = baseUrl
 
   return (
     <div id="book" className="rounded-2xl bg-ivory/10 p-2 backdrop-blur-sm">
