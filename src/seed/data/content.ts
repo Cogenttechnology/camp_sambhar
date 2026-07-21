@@ -60,7 +60,7 @@ export const ABOUT = {
 export const BIRDING = {
   title: 'Bird Watching at Sambhar Lake',
   intro: [
-    "Wake up to the sounds of nature and witness one of India's most remarkable birding destinations. Sambhar Lake, India's largest inland salt lake and a Ramsar Wetland of International Importance, is a paradise for bird lovers, photographers, and nature enthusiasts.",
+    "Wake up to the sounds of nature and witness one of India's most remarkable birding destinations. Sambhar Lake, Asia's largest inland salt lake and a Ramsar Wetland of International Importance, is a paradise for bird lovers, photographers, and nature enthusiasts.",
     'Every year, thousands of migratory birds travel from distant countries to Sambhar Lake, transforming the vast salt lake into a vibrant sanctuary. During the migratory season, the lake becomes home to spectacular flocks of Greater and Lesser Flamingos, along with pelicans, painted storks, avocets, stilts, spoonbills, gulls, terns, ducks, raptors, and many other resident and migratory species.',
     "At Camp Sambhar Resort, our guided bird watching experience takes you closer to this incredible ecosystem. Led by knowledgeable local naturalists, you'll explore the lake's diverse habitats, learn about different bird species, their migration patterns, feeding behaviour, and the unique ecology that makes Sambhar Lake so special.",
     "Whether you're an experienced birder with binoculars or someone spotting a flamingo for the very first time, every outing offers a chance to slow down, connect with nature, and witness wildlife in its natural habitat.",
@@ -103,7 +103,7 @@ export const SUSTAINABILITY = {
   lead: 'Travel with Purpose',
   intro: [
     'At Camp Sambhar Resort, we believe that tourism should leave a positive impact on both nature and the local community. Nestled near the magnificent Sambhar Salt Lake, every experience we create is guided by respect for the environment, wildlife, and the people who call this region home.',
-    "We are committed to promoting sustainable tourism by encouraging responsible travel practices while preserving the unique ecosystem of India's largest inland salt lake.",
+    "We are committed to promoting sustainable tourism by encouraging responsible travel practices while preserving the unique ecosystem of Asia's largest inland salt lake.",
   ],
   groups: [
     {

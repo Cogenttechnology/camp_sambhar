@@ -101,7 +101,7 @@ function IntroSection() {
             Slow down. Look closer. Stay wild.
           </h2>
           <p className="mt-6 max-w-md text-muted text-lg">
-            Camp Sambhar is a soulful eco-luxury retreat on the edge of India’s largest inland salt
+            Camp Sambhar is a soulful eco-luxury retreat on the edge of Asia’s largest inland salt
             lake. Here, time slows, nature speaks, and every stay leaves a lighter footprint.
           </p>
           <ul className="mt-8 flex flex-wrap gap-10">
