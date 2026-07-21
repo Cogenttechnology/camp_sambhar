@@ -4,7 +4,7 @@ import { getPayloadClient } from '../../../lib/payload'
 import { getSiteSettings } from '../../../lib/queries'
 import { buildMetadata } from '../../../lib/seo'
 import { PageHero } from '../../../components/layout/PageHero'
-import { ArtAccent, PaperTexture } from '../../../components/ui/Nature'
+import { ArtAccent, PaperTexture, TopoPattern, TornEdge } from '../../../components/ui/Nature'
 import { PayloadImage } from '../../../components/PayloadImage'
 import { Reveal } from '../../../components/ui/Reveal'
 
@@ -41,9 +41,13 @@ export default async function BlogPage() {
         art="curlew"
       />
 
-      <section className="relative overflow-hidden bg-ivory py-[var(--spacing-section)]">
+      <TornEdge fill="var(--color-ivory)" />
+
+      <section className="relative overflow-hidden bg-ivory pb-[var(--spacing-section)] pt-10">
         <PaperTexture opacity={0.35} />
+        <TopoPattern opacity={0.05} />
         <ArtAccent art="acacia-khejri" className="-right-16 bottom-10 hidden w-56 lg:block" opacity={0.28} />
+        <ArtAccent art="grass" className="-left-12 top-16 hidden w-44 lg:block" opacity={0.26} />
         <div className="container-page relative grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post, i) => (
             <Reveal key={post.id} delay={(i % 3) * 80}>

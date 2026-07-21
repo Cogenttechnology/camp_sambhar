@@ -167,3 +167,71 @@ export function Ornament({ className }: { className?: string }) {
     </div>
   )
 }
+
+/**
+ * A drop cap for the opening paragraph of a long read. Sets the first letter in
+ * the serif face and floats it into the text — an editorial cue that says
+ * "essay", not "hotel page".
+ */
+export function DropCap({ children, className }: { children: string; className?: string }) {
+  const [first, ...rest] = children
+  return (
+    <p className={cn('text-pretty', className)}>
+      <span
+        aria-hidden
+        className="float-left mr-3 mt-1 font-[family-name:var(--font-serif)] text-6xl font-light leading-[0.78] text-red-600"
+      >
+        {first}
+      </span>
+      {rest.join('')}
+    </p>
+  )
+}
+
+/**
+ * A quiet field-note label — a hairline, a diamond, and small tracked caps.
+ * Use above a heading in place of a plain eyebrow.
+ */
+export function FieldLabel({ children, className }: { children: React.ReactNode; className?: string }) {
+  return (
+    <p
+      className={cn(
+        'flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] opacity-70',
+        className,
+      )}
+    >
+      <span aria-hidden className="h-px w-8 bg-current opacity-40" />
+      <span aria-hidden className="h-1 w-1 rotate-45 bg-current opacity-60" />
+      {children}
+    </p>
+  )
+}
+
+/**
+ * A torn-paper edge between sections — softer and more tactile than the wave.
+ * `fill` is the colour of the section *below* the tear.
+ */
+export function TornEdge({
+  className,
+  fill = 'var(--color-ivory)',
+  flip = false,
+}: {
+  className?: string
+  fill?: string
+  flip?: boolean
+}) {
+  return (
+    <div aria-hidden className={cn('pointer-events-none relative w-full leading-[0]', className)}>
+      <svg
+        viewBox="0 0 1440 48"
+        preserveAspectRatio="none"
+        className={cn('block h-[28px] w-full sm:h-[40px]', flip && 'rotate-180')}
+      >
+        <path
+          d="M0,24 L24,17 L52,27 L86,15 L118,25 L150,13 L186,26 L220,18 L256,29 L292,16 L330,27 L368,14 L404,25 L442,19 L478,30 L514,17 L552,26 L590,15 L628,27 L666,20 L704,29 L742,16 L780,25 L818,13 L856,26 L894,18 L932,28 L970,15 L1008,26 L1046,19 L1084,29 L1122,17 L1160,25 L1198,14 L1236,27 L1274,20 L1312,28 L1350,16 L1388,25 L1416,19 L1440,26 L1440,48 L0,48 Z"
+          fill={fill}
+        />
+      </svg>
+    </div>
+  )
+}

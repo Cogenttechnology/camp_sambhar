@@ -8,7 +8,7 @@ import { PayloadImage } from '../../../components/PayloadImage'
 import { Reveal } from '../../../components/ui/Reveal'
 import { Parallax } from '../../../components/ui/Parallax'
 import { MenuExplorer, type MenuEntry } from '../../../components/MenuExplorer'
-import { ArtAccent, PaperTexture, TopoPattern, WaveDivider, OrnamentBand } from '../../../components/ui/Nature'
+import { ArtAccent, FieldLabel, PaperTexture, TopoPattern, WaveDivider, OrnamentBand } from '../../../components/ui/Nature'
 import { JsonLd } from '../../../lib/jsonld'
 import { SITE_URL } from '../../../lib/utils'
 import type { Media } from '../../../payload-types'
@@ -139,7 +139,7 @@ export default async function CafePage() {
         <div className="container-page relative">
           <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
             <Reveal>
-              <p className="eyebrow mb-3">The kitchen</p>
+              <FieldLabel className="mb-3 text-red-500">The kitchen</FieldLabel>
               <h2 className="font-[family-name:var(--font-serif)] text-[length:var(--text-display)] leading-[var(--text-display--line-height)]">
                 Cooked fresh, eaten slowly
               </h2>
@@ -245,7 +245,7 @@ export default async function CafePage() {
         <TopoPattern opacity={0.05} />
         <div className="container-page relative">
           <Reveal>
-            <p className="eyebrow mb-3">The menu</p>
+            <FieldLabel className="mb-3 text-red-500">The menu</FieldLabel>
             <h2 className="font-[family-name:var(--font-serif)] text-[length:var(--text-display)] leading-[var(--text-display--line-height)]">
               {entries.length} dishes, one long table
             </h2>

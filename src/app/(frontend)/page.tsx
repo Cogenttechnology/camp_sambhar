@@ -7,7 +7,7 @@ import { Reveal } from '../../components/ui/Reveal'
 import { AvailabilityBar } from '../../components/StayflexiWidget'
 import { EnquiryPopup } from '../../components/EnquiryPopup'
 import { Parallax } from '../../components/ui/Parallax'
-import { ArtAccent, TopoPattern, WaveDivider } from '../../components/ui/Nature'
+import { ArtAccent, FieldLabel, TopoPattern, WaveDivider } from '../../components/ui/Nature'
 import type { Room, Experience, Review, BlogPost, Media } from '../../payload-types'
 
 export const revalidate = 3600
@@ -96,7 +96,7 @@ function IntroSection() {
     <section className="bg-ivory py-[var(--spacing-section)]">
       <div className="container-page grid gap-12 lg:grid-cols-2 lg:items-center">
         <Reveal>
-          <p className="eyebrow mb-4">The Camp</p>
+          <FieldLabel className="mb-4 text-red-500">The Camp</FieldLabel>
           <h2 className="font-[family-name:var(--font-serif)] text-[length:var(--text-display)] leading-[var(--text-display--line-height)]">
             Slow down. Look closer. Stay wild.
           </h2>

@@ -7,6 +7,13 @@ import { buildMetadata } from '../../../../lib/seo'
 import { PageHero } from '../../../../components/layout/PageHero'
 import { RichText } from '../../../../components/RichText'
 import { JsonLd, articleJsonLd, breadcrumbJsonLd } from '../../../../lib/jsonld'
+import {
+  ArtAccent,
+  DropCap,
+  Ornament,
+  OrnamentBand,
+  PaperTexture,
+} from '../../../../components/ui/Nature'
 import type { BlogPost, Team } from '../../../../payload-types'
 
 export const revalidate = 3600
@@ -86,24 +93,47 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         ])}
       />
 
-      <article className="bg-ivory py-[var(--spacing-section)]">
-        <div className="container-page max-w-2xl">
+      <article className="relative overflow-hidden bg-ivory py-[var(--spacing-section)]">
+        <PaperTexture opacity={0.3} />
+        <ArtAccent
+          art="curlew"
+          className="-left-20 top-24 hidden w-56 lg:block"
+          opacity={0.2}
+        />
+        <ArtAccent
+          art="grass"
+          className="-right-16 bottom-24 hidden w-52 lg:block"
+          opacity={0.22}
+        />
+        <div className="container-page relative max-w-2xl">
           <div className="mb-8 flex items-center gap-3 text-sm text-muted">
             {author ? <span>By {author.name}</span> : null}
             {author && dateStr ? <span>·</span> : null}
             {dateStr ? <time dateTime={post.publishedAt ?? undefined}>{dateStr}</time> : null}
           </div>
 
+          <Ornament className="mb-8 text-charcoal" />
+
+          {/* Drop-capped standfirst — sets an editorial tone before the body. */}
+          {post.excerpt ? (
+            <DropCap className="mb-8 font-[family-name:var(--font-serif)] text-xl leading-relaxed text-charcoal/90">
+              {post.excerpt}
+            </DropCap>
+          ) : null}
+
           <div className="prose-body">
             <RichText data={post.body as never} />
           </div>
 
-          <div className="mt-12 border-t border-sand-400/40 pt-6">
+          <Ornament className="mt-12 text-charcoal" />
+
+          <div className="mt-6 border-t border-sand-400/40 pt-6">
             <Link href="/blog" className="text-sm font-medium text-red-600 hover:underline">
               ← All journal entries
             </Link>
           </div>
         </div>
+        <OrnamentBand className="relative mt-12" opacity={0.5} />
       </article>
     </>
   )

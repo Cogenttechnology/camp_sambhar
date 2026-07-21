@@ -9,6 +9,13 @@ import { PayloadImage } from '../../../../components/PayloadImage'
 import { RichText } from '../../../../components/RichText'
 import { JsonLd, breadcrumbJsonLd } from '../../../../lib/jsonld'
 import { SITE_URL } from '../../../../lib/utils'
+import {
+  ArtAccent,
+  FieldLabel,
+  Ornament,
+  PaperTexture,
+  TopoPattern,
+} from '../../../../components/ui/Nature'
 import type { Experience } from '../../../../payload-types'
 
 export const revalidate = 3600
@@ -60,6 +67,7 @@ export default async function ExperiencePage({ params }: { params: Promise<{ slu
     (r): r is Experience => typeof r === 'object' && r !== null,
   )
   const gallery = (exp.gallery ?? []).map((g) => g.image).filter(Boolean)
+  const [accentA, accentB] = accentsFor(exp.slug ?? '', exp.title ?? '')
 
   return (
     <>
@@ -82,8 +90,18 @@ export default async function ExperiencePage({ params }: { params: Promise<{ slu
         ])}
       />
 
-      <section className="bg-ivory py-[var(--spacing-section)]">
-        <div className="container-page grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-start">
+      <section className="relative overflow-hidden bg-ivory py-[var(--spacing-section)]">
+        <PaperTexture opacity={0.4} />
+        <TopoPattern opacity={0.05} />
+        <ArtAccent art={accentA} className="-left-20 top-12 hidden w-60 lg:block" opacity={0.28} />
+        <ArtAccent
+          art={accentB}
+          className="-right-16 bottom-48 hidden w-56 lg:block"
+          opacity={0.3}
+          flip
+        />
+
+        <div className="container-page relative grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-start">
           <div className="prose-body max-w-none">
             <RichText data={exp.description as never} />
 
@@ -102,7 +120,7 @@ export default async function ExperiencePage({ params }: { params: Promise<{ slu
             )}
           </div>
 
-          <aside className="rounded-2xl bg-white p-6 shadow-sm">
+          <aside className="relative rounded-2xl bg-white p-6 shadow-sm">
             <dl className="space-y-3 text-sm">
               {exp.duration ? <Row label="Duration" value={exp.duration} /> : null}
               {exp.bestTime ? <Row label="Best time" value={exp.bestTime} /> : null}
@@ -111,7 +129,7 @@ export default async function ExperiencePage({ params }: { params: Promise<{ slu
 
             {exp.whatToBring && exp.whatToBring.length > 0 && (
               <div className="mt-6 border-t border-sand-400/40 pt-6">
-                <p className="eyebrow mb-3">What to bring</p>
+                <FieldLabel className="mb-3 text-charcoal">What to bring</FieldLabel>
                 <ul className="space-y-2 text-sm text-charcoal">
                   {exp.whatToBring.map((w, i) => (
                     <li key={i} className="flex items-center gap-2">
@@ -133,8 +151,8 @@ export default async function ExperiencePage({ params }: { params: Promise<{ slu
         </div>
 
         {gallery.length > 0 && (
-          <div className="container-page mt-16">
-            <p className="eyebrow mb-6">Gallery</p>
+          <div className="container-page relative mt-16">
+            <FieldLabel className="mb-6 text-charcoal">Gallery</FieldLabel>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {gallery.map((img, i) => (
                 <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-xl">
@@ -146,8 +164,9 @@ export default async function ExperiencePage({ params }: { params: Promise<{ slu
         )}
 
         {related.length > 0 && (
-          <div className="container-page mt-16">
-            <p className="eyebrow mb-6">You may also like</p>
+          <div className="container-page relative mt-16">
+            <Ornament className="mb-10 text-charcoal" />
+            <FieldLabel className="mb-6 text-charcoal">You may also like</FieldLabel>
             <div className="grid gap-6 sm:grid-cols-3">
               {related.slice(0, 3).map((r) => (
                 <Link key={r.id} href={`/experiences/${r.slug}`} className="group block">
@@ -161,7 +180,7 @@ export default async function ExperiencePage({ params }: { params: Promise<{ slu
           </div>
         )}
 
-        <div className="container-page mt-14">
+        <div className="container-page relative mt-14">
           <Link href="/experiences" className="text-sm font-medium text-red-600 hover:underline">
             ← All experiences
           </Link>
@@ -181,3 +200,21 @@ function Row({ label, value }: { label: string; value: string }) {
 }
 
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1)
+
+type Accent = React.ComponentProps<typeof ArtAccent>['art']
+
+/**
+ * Picks the pair of naturalist accents that suits the experience — birds for
+ * birding, a constellation for night skies, camel and khejri for the desert.
+ * Falls back to the generic desert pairing.
+ */
+function accentsFor(slug: string, title: string): [Accent, Accent] {
+  const s = `${slug} ${title}`.toLowerCase()
+  if (/bird|flaming|wetland|lake|migrat/.test(s)) return ['flamingo', 'curlew']
+  if (/star|night|sky|astro|moon/.test(s)) return ['constellation', 'grass']
+  if (/salt|pan|flat|brine/.test(s)) return ['salt-crystals', 'curlew']
+  if (/camel|safari|dune|ride/.test(s)) return ['camel', 'acacia-khejri']
+  if (/village|heritage|temple|craft|culture|food/.test(s)) return ['acacia-khejri', 'camel']
+  if (/walk|trek|hike|trail|nature/.test(s)) return ['grass', 'acacia-khejri']
+  return ['acacia-khejri', 'grass']
+}

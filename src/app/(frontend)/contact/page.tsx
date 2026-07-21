@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { getSiteSettings } from '../../../lib/queries'
 import { buildMetadata } from '../../../lib/seo'
 import { PageHero } from '../../../components/layout/PageHero'
-import { ArtAccent, PaperTexture, TopoPattern } from '../../../components/ui/Nature'
+import { ArtAccent, FieldLabel, PaperTexture, TopoPattern, TornEdge } from '../../../components/ui/Nature'
 import { EnquiryForm } from '../../../components/EnquiryForm'
 import { whatsappLink } from '../../../lib/utils'
 
@@ -33,12 +33,16 @@ export default async function ContactPage() {
         art="camel"
       />
 
-      <section className="relative overflow-hidden bg-ivory py-[var(--spacing-section)]">
+      <TornEdge fill="var(--color-ivory)" />
+
+      <section className="relative overflow-hidden bg-ivory pb-[var(--spacing-section)] pt-10">
         <PaperTexture opacity={0.35} />
         <TopoPattern opacity={0.05} />
         <ArtAccent art="flamingo" className="-left-8 bottom-16 hidden w-40 lg:block" opacity={0.3} />
+        <ArtAccent art="grass" className="-right-10 top-12 hidden w-44 lg:block" opacity={0.26} flip />
         <div className="container-page relative grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-start">
           <div>
+            <FieldLabel className="mb-3 text-red-500">Get in touch</FieldLabel>
             <h2 className="font-[family-name:var(--font-serif)] text-2xl">Reach us directly</h2>
             <dl className="mt-6 space-y-5 text-sm">
               {settings.phone ? (

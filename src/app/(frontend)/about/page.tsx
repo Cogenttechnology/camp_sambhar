@@ -7,7 +7,7 @@ import { PageHero } from '../../../components/layout/PageHero'
 import { PayloadImage } from '../../../components/PayloadImage'
 import { RichText } from '../../../components/RichText'
 import { Reveal } from '../../../components/ui/Reveal'
-import { ArtAccent, PaperTexture } from '../../../components/ui/Nature'
+import { ArtAccent, PaperTexture, TopoPattern, TornEdge } from '../../../components/ui/Nature'
 import type { Media } from '../../../payload-types'
 
 export const revalidate = 3600
@@ -79,9 +79,13 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-ivory py-[var(--spacing-section)]">
+      <TornEdge fill="var(--color-ivory)" />
+
+      <section className="relative overflow-hidden bg-ivory pb-[var(--spacing-section)] pt-10">
         <PaperTexture opacity={0.35} />
+        <TopoPattern opacity={0.05} />
         <ArtAccent art="acacia-khejri" className="-left-16 top-10 hidden w-56 lg:block" opacity={0.28} />
+        <ArtAccent art="camel" className="-right-14 bottom-8 hidden w-52 lg:block" opacity={0.24} flip />
         <div className="container-page relative grid gap-6 md:grid-cols-3">
           {ABOUT_LINKS.map((l, i) => (
             <Reveal key={l.slug} delay={i * 80}>

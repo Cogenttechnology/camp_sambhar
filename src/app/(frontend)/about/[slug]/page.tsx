@@ -7,6 +7,12 @@ import { buildMetadata } from '../../../../lib/seo'
 import { PageHero } from '../../../../components/layout/PageHero'
 import { RenderBlocks } from '../../../../components/blocks/RenderBlocks'
 import { JsonLd, breadcrumbJsonLd } from '../../../../lib/jsonld'
+import {
+  ArtAccent,
+  Ornament,
+  OrnamentBand,
+  PaperTexture,
+} from '../../../../components/ui/Nature'
 import type { Page } from '../../../../payload-types'
 
 export const revalidate = 3600
@@ -71,14 +77,32 @@ export default async function AboutSubPage({ params }: { params: Promise<{ slug:
         ])}
       />
 
-      <RenderBlocks blocks={page.layout} />
+      <div className="relative overflow-hidden">
+        <ArtAccent
+          art="acacia-khejri"
+          className="-left-20 top-32 hidden w-56 lg:block"
+          opacity={0.22}
+        />
+        <ArtAccent
+          art="camel"
+          className="-right-20 bottom-40 hidden w-56 lg:block"
+          opacity={0.2}
+          flip
+        />
+        <div className="relative">
+          <RenderBlocks blocks={page.layout} />
+        </div>
+      </div>
 
-      <section className="bg-ivory pb-[var(--spacing-section)] pt-6">
-        <div className="container-page">
+      <section className="relative overflow-hidden bg-ivory pb-[var(--spacing-section)] pt-6">
+        <PaperTexture opacity={0.3} />
+        <div className="container-page relative">
+          <Ornament className="mb-8 text-charcoal" />
           <Link href="/about" className="text-sm font-medium text-red-600 hover:underline">
             ← About Camp Sambhar
           </Link>
         </div>
+        <OrnamentBand className="relative mt-12" opacity={0.5} />
       </section>
     </>
   )

@@ -6,6 +6,13 @@ import { buildMetadata } from '../../../lib/seo'
 import { PageHero } from '../../../components/layout/PageHero'
 import { PayloadImage } from '../../../components/PayloadImage'
 import { Reveal } from '../../../components/ui/Reveal'
+import {
+  ArtAccent,
+  FieldLabel,
+  OrnamentBand,
+  PaperTexture,
+  TopoPattern,
+} from '../../../components/ui/Nature'
 import { JsonLd, breadcrumbJsonLd } from '../../../lib/jsonld'
 import { BIRDING, BIRD_GROUPS } from '../../../seed/data/content'
 
@@ -40,13 +47,17 @@ export default async function BirdsPage() {
       <PageHero
         eyebrow="Ramsar Wetland of International Importance"
         title={BIRDING.title}
-        intro="A paradise for bird lovers, photographers and nature enthusiasts — on India's largest inland salt lake."
+        intro="A paradise for bird lovers, photographers and nature enthusiasts — on Asia's largest inland salt lake."
         image={photos[0] as never}
       />
 
       {/* Intro copy */}
-      <section className="bg-ivory py-[var(--spacing-section)]">
-        <div className="container-page grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-start">
+      <section className="relative overflow-hidden bg-ivory py-[var(--spacing-section)]">
+        <PaperTexture opacity={0.35} />
+        <ArtAccent art="curlew" className="-right-10 top-8 hidden w-52 lg:block" opacity={0.3} flip />
+        <ArtAccent art="grass" className="-left-12 bottom-0 hidden w-44 lg:block" opacity={0.32} />
+
+        <div className="container-page relative grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-start">
           <Reveal className="prose-body max-w-2xl text-lg">
             {BIRDING.intro.map((p, i) => (
               <p key={i}>{p}</p>
@@ -77,8 +88,11 @@ export default async function BirdsPage() {
 
       {/* Photo strip — one large frame, then a grid */}
       {photos.length > 1 && (
-        <section className="bg-white py-[var(--spacing-section)]">
-          <div className="container-page">
+        <section className="relative overflow-hidden bg-white py-[var(--spacing-section)]">
+          <ArtAccent art="flamingo" className="-left-8 top-24 hidden w-36 lg:block" opacity={0.22} />
+
+          <div className="container-page relative">
+            <FieldLabel className="mb-3">In the field</FieldLabel>
             <h2 className="font-[family-name:var(--font-serif)] text-[length:var(--text-display)] leading-[var(--text-display--line-height)]">
               Seen at the lake
             </h2>
@@ -118,10 +132,17 @@ export default async function BirdsPage() {
       )}
 
       {/* Species checklist */}
-      <section className="bg-ivory py-[var(--spacing-section)]">
-        <div className="container-page">
+      <section className="relative overflow-hidden bg-ivory py-[var(--spacing-section)]">
+        <TopoPattern opacity={0.05} />
+        <ArtAccent
+          art="curlew"
+          className="-right-14 bottom-24 hidden w-56 lg:block"
+          opacity={0.25}
+        />
+
+        <div className="container-page relative">
           <Reveal>
-            <p className="eyebrow mb-3">Field checklist</p>
+            <FieldLabel className="mb-3">Field checklist</FieldLabel>
             <h2 className="font-[family-name:var(--font-serif)] text-[length:var(--text-display)] leading-[var(--text-display--line-height)]">
               {totalSpecies}+ species recorded at Sambhar
             </h2>
@@ -150,9 +171,24 @@ export default async function BirdsPage() {
         </div>
       </section>
 
-      {/* Closing */}
-      <section className="bg-indigo-900 py-[var(--spacing-section)] text-ivory">
-        <div className="container-page max-w-3xl text-center">
+      <OrnamentBand className="bg-ivory pb-4" opacity={0.5} />
+
+      {/* Closing — night sky, so no multiply blend or the ink would vanish */}
+      <section className="relative overflow-hidden bg-indigo-900 py-[var(--spacing-section)] text-ivory">
+        <ArtAccent
+          art="constellation"
+          className="-right-10 -top-6 hidden w-72 lg:block"
+          opacity={0.18}
+          blend="none"
+        />
+        <ArtAccent
+          art="flamingo"
+          className="-left-10 bottom-0 hidden w-40 lg:block"
+          opacity={0.14}
+          blend="none"
+        />
+
+        <div className="container-page relative max-w-3xl text-center">
           <Reveal>
             <p className="font-[family-name:var(--font-serif)] text-2xl leading-relaxed sm:text-3xl">
               {BIRDING.closing}
