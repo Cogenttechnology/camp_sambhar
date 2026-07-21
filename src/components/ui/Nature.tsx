@@ -60,6 +60,11 @@ const ART_SIZE: Record<Art, { w: number; h: number }> = {
 /**
  * A decorative naturalist illustration. Purely ornamental — always aria-hidden.
  * `className` positions it (absolute) and sets its width.
+ *
+ * The PNGs carry real transparency (see scripts/knockout-illustrations.ts), so
+ * `mix-blend-multiply` is only softening the ink into the surface behind it —
+ * it is not what makes the background disappear. On a dark section pass
+ * `blend="none"` to keep the strokes at full strength.
  */
 export function ArtAccent({
   art,
@@ -67,12 +72,14 @@ export function ArtAccent({
   opacity = 0.7,
   float = true,
   flip = false,
+  blend = 'multiply',
 }: {
   art: Art
   className?: string
   opacity?: number
   float?: boolean
   flip?: boolean
+  blend?: 'multiply' | 'none'
 }) {
   const { w, h } = ART_SIZE[art]
   return (
@@ -83,7 +90,8 @@ export function ArtAccent({
       width={w}
       height={h}
       className={cn(
-        'pointer-events-none absolute select-none mix-blend-multiply',
+        'pointer-events-none absolute select-none',
+        blend === 'multiply' && 'mix-blend-multiply',
         float && 'float-slow',
         flip && 'scale-x-[-1]',
         className,

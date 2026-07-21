@@ -153,10 +153,12 @@ function RoomsSection({
     <section className="relative overflow-hidden bg-red-600 py-[var(--spacing-section)] text-ivory">
       {/* Soften the flat red with the topographic pattern and a line-art accent */}
       <TopoPattern opacity={0.07} />
+      {/* Dark band: multiply would crush the ink into the red, so blend off. */}
       <ArtAccent
         art="acacia-khejri"
         className="-right-16 top-8 hidden w-72 lg:block"
-        opacity={0.12}
+        opacity={0.16}
+        blend="none"
       />
 
       <div className="container-page relative">
