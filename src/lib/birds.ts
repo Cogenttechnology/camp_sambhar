@@ -2,6 +2,16 @@ import { getPayloadClient } from './payload'
 import type { Media } from '../payload-types'
 
 /**
+ * Photographs that must never be published, whatever else changes.
+ *
+ * These show a White-throated Kingfisher held in a hand — one of them appears
+ * to be an injured or dead bird. On an eco-tourism site that reads as wildlife
+ * disturbance and invites exactly the criticism the brand should avoid. They
+ * are filtered out of every surface, not merely left off the curated list.
+ */
+export const EXCLUDED_PHOTOS = ['img20240406083700', 'img20240406084142'] as const
+
+/**
  * The bird album holds 55 photographs of mixed quality — many are distant
  * record shots of the shoreline. These are the strong, publishable frames
  * (close-ups, flocks in flight, feeding groups), in the order we want to show
@@ -26,6 +36,10 @@ export const BEST_BIRD_PHOTOS = [
 
 const baseName = (m: Media) => (m.filename ?? '').replace(/\.[a-z]+$/i, '')
 
+/** True when a photo is safe to show anywhere on the site. */
+export const isPublishable = (m: Media) =>
+  !(EXCLUDED_PHOTOS as readonly string[]).includes(baseName(m))
+
 /** Rank a media item by our curated order; unlisted photos sort to the end. */
 export function birdRank(m: Media): number {
   const i = (BEST_BIRD_PHOTOS as readonly string[]).indexOf(baseName(m))
@@ -44,7 +58,10 @@ export async function getBirdPhotos(onlyCurated = true): Promise<Media[]> {
     depth: 2,
     limit: 1,
   })
-  const all = (docs[0]?.images ?? []).map((i) => i.image as Media).filter(Boolean)
+  const all = (docs[0]?.images ?? [])
+    .map((i) => i.image as Media)
+    .filter(Boolean)
+    .filter(isPublishable)
   const sorted = [...all].sort((a, b) => birdRank(a) - birdRank(b))
   return onlyCurated ? sorted.filter((m) => birdRank(m) < BEST_BIRD_PHOTOS.length) : sorted
 }

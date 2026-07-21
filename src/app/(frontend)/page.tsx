@@ -7,16 +7,21 @@ import { Reveal } from '../../components/ui/Reveal'
 import { AvailabilityBar } from '../../components/StayflexiWidget'
 import { EnquiryPopup } from '../../components/EnquiryPopup'
 import { Parallax } from '../../components/ui/Parallax'
-import { ArtAccent, FieldLabel, TopoPattern, WaveDivider } from '../../components/ui/Nature'
+import {
+  ArtAccent,
+  FieldLabel,
+  PaperTexture,
+  TopoPattern,
+  WaveDivider,
+} from '../../components/ui/Nature'
+import { getShowcasePhotos } from '../../lib/showcase'
 import type { Room, Experience, Review, BlogPost, Media } from '../../payload-types'
 
 export const revalidate = 3600
 
 export default async function HomePage() {
-  const [{ rooms, experiences, reviews, posts, birdPhotos }, settings] = await Promise.all([
-    getHomeData(),
-    getSiteSettings(),
-  ])
+  const [{ rooms, experiences, reviews, posts, birdPhotos }, settings, showcase] =
+    await Promise.all([getHomeData(), getSiteSettings(), getShowcasePhotos()])
 
   return (
     <>
@@ -27,6 +32,7 @@ export default async function HomePage() {
       <BirdsSection photos={birdPhotos} />
       <CafeSection />
       <StargazingSection />
+      <ShowcaseSection photos={showcase} />
       <ReviewsSection reviews={reviews} />
       <RouteSection />
       <JournalSection posts={posts} />
@@ -595,6 +601,82 @@ function RouteSection() {
 }
 
 /* ─────────────── Journal ─────────────── */
+/* ─────────────── Gallery: a mosaic of the place ─────────────── */
+function ShowcaseSection({ photos }: { photos: { media: Media; alt: string }[] }) {
+  if (photos.length < 6) return null
+
+  // A deliberately uneven mosaic — equal tiles read as a stock contact sheet.
+  //
+  // Two feature tiles over a 4-column grid, sized so the rows close exactly:
+  //   rows 1-2  aerial 2x2 (4) + tall 1x2 (2) + two 1x1 (2) = 8 cells
+  //   row 3     four 1x1                                    = 4 cells
+  // Ten photographs, twelve cells, no ragged edge.
+  //
+  // A third wide tile was tried here and removed: mixing col-span and row-span
+  // in the same auto-placed grid pushed the tail onto an extra row and left a
+  // hole, which is exactly what a mosaic must not do.
+  const span = [
+    'sm:col-span-2 sm:row-span-2', // 0 aerial anchor
+    'sm:row-span-2', // 1 tall wildlife frame
+    '', // 2
+    '', // 3
+    '', // 4
+    '', // 5
+    '', // 6
+    '', // 7
+  ]
+
+  const tiles = photos.slice(0, 8)
+
+  return (
+    <section className="relative overflow-hidden bg-ivory py-[var(--spacing-section)]">
+      <PaperTexture opacity={0.3} />
+      <TopoPattern opacity={0.05} />
+      <ArtAccent art="grass" className="-left-12 bottom-8 hidden w-44 lg:block" opacity={0.24} />
+
+      <div className="container-page relative">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <FieldLabel className="mb-3 text-red-500">In pictures</FieldLabel>
+            <h2 className="font-[family-name:var(--font-serif)] text-[length:var(--text-display)] leading-[var(--text-display--line-height)]">
+              A place best seen, not described
+            </h2>
+          </div>
+          <Link href="/gallery" className="eyebrow hidden items-center gap-2 sm:inline-flex">
+            View the full gallery <Arrow />
+          </Link>
+        </div>
+
+        <div className="mt-10 grid auto-rows-[168px] grid-cols-2 gap-3 sm:auto-rows-[190px] sm:grid-cols-4 sm:gap-4">
+          {tiles.map((p, i) => (
+            <Reveal
+              key={p.media.id ?? i}
+              delay={(i % 4) * 70}
+              direction="scale"
+              className={`${span[i] ?? ''} group relative overflow-hidden rounded-xl`}
+            >
+              <PayloadImage
+                media={p.media as never}
+                alt={p.alt}
+                fill
+                sizes="(max-width:640px) 50vw, 25vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+            </Reveal>
+          ))}
+        </div>
+
+        <Link
+          href="/gallery"
+          className="eyebrow mt-8 inline-flex items-center gap-2 sm:hidden"
+        >
+          View the full gallery <Arrow />
+        </Link>
+      </div>
+    </section>
+  )
+}
+
 function JournalSection({ posts }: { posts: BlogPost[] }) {
   if (posts.length === 0) return null
   return (

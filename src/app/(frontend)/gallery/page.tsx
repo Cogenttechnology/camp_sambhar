@@ -7,6 +7,7 @@ import { GalleryLightbox } from '../../../components/GalleryLightbox'
 import { Reveal } from '../../../components/ui/Reveal'
 import { Parallax } from '../../../components/ui/Parallax'
 import { ArtAccent, PaperTexture, TopoPattern, OrnamentBand } from '../../../components/ui/Nature'
+import { isPublishable } from '../../../lib/birds'
 import type { Media } from '../../../payload-types'
 
 export const revalidate = 3600
@@ -67,10 +68,14 @@ export default async function GalleryPage() {
 
         <div className="container-page relative space-y-20">
           {albums.map((album, ai) => {
-            const photos = (album.images ?? []).map((img) => ({
-              image: img.image as Media | number,
-              caption: img.caption,
-            }))
+            const photos = (album.images ?? [])
+              .filter((img) =>
+                typeof img.image === 'object' ? isPublishable(img.image as Media) : true,
+              )
+              .map((img) => ({
+                image: img.image as Media | number,
+                caption: img.caption,
+              }))
             if (photos.length === 0) return null
             return (
               <div key={album.id}>
