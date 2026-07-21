@@ -1,8 +1,14 @@
 'use client'
 
-import { useState } from 'react'
-import Script from 'next/script'
+import { useEffect, useId, useState } from 'react'
 import { ButtonEl } from './ui/Button'
+
+/** Today and tomorrow as yyyy-mm-dd, for sensible date-input minimums. */
+function isoDay(offsetDays = 0) {
+  const d = new Date()
+  d.setDate(d.getDate() + offsetDays)
+  return d.toISOString().slice(0, 10)
+}
 
 /**
  * Stayflexi booking. We render an availability form that opens the Stayflexi
@@ -17,18 +23,72 @@ export function AvailabilityBar({
   propertyId?: string | null
 }) {
   const [open, setOpen] = useState(false)
-  const configured = Boolean(bookingUrl || propertyId)
+  const [checkIn, setCheckIn] = useState('')
+  const [checkOut, setCheckOut] = useState('')
+  const [guests, setGuests] = useState('2')
 
-  const resolvedUrl =
+  // bookingengine.stayflexi.com is the live host. An earlier build pointed at
+  // live.stayflexi.com, which does not resolve — the modal opened on a dead
+  // frame for every guest. Verified: 200, and no X-Frame-Options/frame-ancestors
+  // header, so it is embeddable.
+  const baseUrl =
     bookingUrl ||
-    (propertyId ? `https://live.stayflexi.com/?hotelId=${encodeURIComponent(propertyId)}` : null)
+    (propertyId
+      ? `https://bookingengine.stayflexi.com/?hotelId=${encodeURIComponent(propertyId)}`
+      : null)
+
+  // Escape closes the modal, and the page behind it must not scroll while open.
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    document.addEventListener('keydown', onKey)
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = prevOverflow
+    }
+  }, [open])
+
+  // Carry whatever the guest typed into the engine so they don't re-enter it.
+  // Stayflexi ignores params it doesn't recognise, so this is safe either way.
+  const resolvedUrl = (() => {
+    if (!baseUrl) return null
+    try {
+      const u = new URL(baseUrl)
+      if (checkIn) u.searchParams.set('checkin', checkIn)
+      if (checkOut) u.searchParams.set('checkout', checkOut)
+      if (guests) u.searchParams.set('adults', guests)
+      return u.toString()
+    } catch {
+      return baseUrl
+    }
+  })()
 
   return (
     <div id="book" className="rounded-2xl bg-ivory/10 p-2 backdrop-blur-sm">
       <div className="grid grid-cols-1 gap-px overflow-hidden rounded-xl bg-ivory/20 sm:grid-cols-[1fr_1fr_1fr_auto]">
-        <Field label="Check-in" hint="Add dates" icon="calendar" />
-        <Field label="Check-out" hint="Add dates" icon="calendar" />
-        <Field label="Guests" hint="2 Adults" icon="user" />
+        <DateField
+          label="Check-in"
+          icon="calendar"
+          value={checkIn}
+          min={isoDay()}
+          onChange={(v) => {
+            setCheckIn(v)
+            // Keep the stay valid: check-out must follow check-in.
+            if (checkOut && v && checkOut <= v) setCheckOut('')
+          }}
+        />
+        <DateField
+          label="Check-out"
+          icon="calendar"
+          value={checkOut}
+          min={checkIn || isoDay(1)}
+          onChange={setCheckOut}
+        />
+        <GuestField label="Guests" value={guests} onChange={setGuests} />
         <ButtonEl
           variant="light"
           className="m-1 rounded-lg sm:rounded-lg"
@@ -67,7 +127,9 @@ export function AvailabilityBar({
         </div>
       )}
 
-      {open && !configured && (
+      {/* Keyed off resolvedUrl, not `configured` — a configured-but-unusable URL
+          must still show the enquiry fallback rather than a dead button. */}
+      {open && !resolvedUrl && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-charcoal/70 p-4"
           role="dialog"
@@ -90,35 +152,95 @@ export function AvailabilityBar({
         </div>
       )}
 
-      {propertyId && (
-        <Script
-          src="https://cdn.stayflexi.com/booking-engine/widget.js"
-          strategy="lazyOnload"
-        />
-      )}
     </div>
   )
 }
 
-function Field({ label, hint, icon }: { label: string; hint: string; icon: 'calendar' | 'user' }) {
+function FieldIcon({ icon }: { icon: 'calendar' | 'user' }) {
   return (
-    <div className="flex items-center gap-3 bg-ivory/10 px-5 py-4 text-left text-ivory">
-      <span className="opacity-70">
-        {icon === 'calendar' ? (
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <rect x="3" y="4" width="18" height="17" rx="2" />
-            <path d="M3 9h18M8 2v4M16 2v4" strokeLinecap="round" />
-          </svg>
-        ) : (
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <circle cx="12" cy="8" r="4" />
-            <path d="M4 21c0-4 4-6 8-6s8 2 8 6" strokeLinecap="round" />
-          </svg>
-        )}
+    <span aria-hidden className="opacity-70">
+      {icon === 'calendar' ? (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <rect x="3" y="4" width="18" height="17" rx="2" />
+          <path d="M3 9h18M8 2v4M16 2v4" strokeLinecap="round" />
+        </svg>
+      ) : (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 21c0-4 4-6 8-6s8 2 8 6" strokeLinecap="round" />
+        </svg>
+      )}
+    </span>
+  )
+}
+
+const fieldShell = 'flex items-center gap-3 bg-ivory/10 px-5 py-4 text-left text-ivory'
+const controlBase =
+  'w-full bg-transparent text-sm text-ivory outline-none focus-visible:underline [color-scheme:dark]'
+
+function DateField({
+  label,
+  icon,
+  value,
+  min,
+  onChange,
+}: {
+  label: string
+  icon: 'calendar' | 'user'
+  value: string
+  min?: string
+  onChange: (v: string) => void
+}) {
+  const id = useId()
+  return (
+    <div className={fieldShell}>
+      <FieldIcon icon={icon} />
+      <span className="min-w-0 flex-1 leading-tight">
+        <label htmlFor={id} className="block text-xs uppercase tracking-widest opacity-70">
+          {label}
+        </label>
+        <input
+          id={id}
+          type="date"
+          value={value}
+          min={min}
+          onChange={(e) => onChange(e.target.value)}
+          className={controlBase}
+        />
       </span>
-      <span className="leading-tight">
-        <span className="block text-xs uppercase tracking-widest opacity-70">{label}</span>
-        <span className="block text-sm">{hint}</span>
+    </div>
+  )
+}
+
+function GuestField({
+  label,
+  value,
+  onChange,
+}: {
+  label: string
+  value: string
+  onChange: (v: string) => void
+}) {
+  const id = useId()
+  return (
+    <div className={fieldShell}>
+      <FieldIcon icon="user" />
+      <span className="min-w-0 flex-1 leading-tight">
+        <label htmlFor={id} className="block text-xs uppercase tracking-widest opacity-70">
+          {label}
+        </label>
+        <select
+          id={id}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className={`${controlBase} [&>option]:text-charcoal`}
+        >
+          {[1, 2, 3, 4, 5, 6].map((n) => (
+            <option key={n} value={String(n)}>
+              {n} {n === 1 ? 'Adult' : 'Adults'}
+            </option>
+          ))}
+        </select>
       </span>
     </div>
   )
