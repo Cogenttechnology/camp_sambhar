@@ -38,16 +38,20 @@ export function AvailabilityBar({
   const [checkOut, setCheckOut] = useState('')
   const [guests, setGuests] = useState('2')
 
-  // bookingengine.stayflexi.com is the live host. An earlier build pointed at
-  // live.stayflexi.com, which does not resolve — the modal opened on a dead
-  // frame for every guest. Verified: 200, and no X-Frame-Options/frame-ancestors
-  // header, so it is embeddable.
+  // The query parameter is hotel_id, with an underscore — confirmed against the
+  // property's live booking link. The engine's own bundle uses `hotelId` as its
+  // internal state key, which is a red herring: passing hotelId in the URL makes
+  // it report "It seems you missed the hotel id".
+  //
+  // An earlier build also pointed at live.stayflexi.com, which does not resolve.
+  // bookingengine.stayflexi.com is the live host and sends no X-Frame-Options or
+  // frame-ancestors header, so it is embeddable.
   const effectivePropertyId = propertyId || ENV_PROPERTY_ID
 
   const baseUrl =
     bookingUrl ||
     (effectivePropertyId
-      ? `https://bookingengine.stayflexi.com/?hotelId=${encodeURIComponent(effectivePropertyId)}`
+      ? `https://bookingengine.stayflexi.com/?hotel_id=${encodeURIComponent(effectivePropertyId)}`
       : null)
 
   // Escape closes the modal, and the page behind it must not scroll while open.
@@ -66,13 +70,24 @@ export function AvailabilityBar({
   }, [open])
 
   // Carry whatever the guest typed into the engine so they don't re-enter it.
-  // Stayflexi ignores params it doesn't recognise, so this is safe either way.
+  //
+  // The engine's parameter names for dates are not documented and could not be
+  // recovered from its bundle, so both the snake_case and camelCase spellings
+  // are sent. hotel_id is snake_case, which makes checkin/checkout the likelier
+  // pair, but sending both is harmless: unrecognised query params are ignored,
+  // and the booking still works from the engine's own date picker either way.
   const resolvedUrl = (() => {
     if (!baseUrl) return null
     try {
       const u = new URL(baseUrl)
-      if (checkIn) u.searchParams.set('checkin', checkIn)
-      if (checkOut) u.searchParams.set('checkout', checkOut)
+      if (checkIn) {
+        u.searchParams.set('checkin', checkIn)
+        u.searchParams.set('checkIn', checkIn)
+      }
+      if (checkOut) {
+        u.searchParams.set('checkout', checkOut)
+        u.searchParams.set('checkOut', checkOut)
+      }
       if (guests) u.searchParams.set('adults', guests)
       return u.toString()
     } catch {
