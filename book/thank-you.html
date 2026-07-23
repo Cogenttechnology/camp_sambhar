@@ -39,7 +39,7 @@ src="https://www.facebook.com/tr?id=1072529981794735&amp;ev=PageView&amp;noscrip
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="assets/css/style.css" rel="stylesheet">
+<link href="assets/css/style.css?v=2" rel="stylesheet">
 </head>
 <body class="ty-body">
 
@@ -110,9 +110,10 @@ src="https://www.facebook.com/tr?id=1072529981794735&amp;ev=PageView&amp;noscrip
         'Hi Camp Sambhar, I just submitted an enquiry.%0A' +
         'Name: ' + encodeURIComponent(d.name || '') + '%0A' +
         'Phone: ' + encodeURIComponent(d.phone || '') + '%0A' +
-        (d.checkIn ? 'Check-in: ' + encodeURIComponent(d.checkIn) + '%0A' : '') +
-        'Guests: ' + encodeURIComponent(d.guests || '') + '%0A' +
-        'Interested in: ' + encodeURIComponent(d.interest || '');
+        (d.email ? 'Email: ' + encodeURIComponent(d.email) + '%0A' : '') +
+        (d.checkIn ? 'Travel dates: ' + encodeURIComponent(d.checkIn) + '%0A' : '') +
+        'Guests: ' + encodeURIComponent(d.guests || '') +
+        (d.interest ? '%0AInterested in: ' + encodeURIComponent(d.interest) : '');
       var wa = document.getElementById('tyWa');
       if (wa) wa.href = 'https://wa.me/919414991122?text=' + msg;
       sessionStorage.removeItem('cs_lead');
