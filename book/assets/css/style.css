@@ -92,7 +92,13 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; letter-spacing: -0
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(203, 177, 139, 0.4);
 }
-.topbar__logo { height: 46px; width: auto; }
+.topbar__logo { height: 68px; width: auto; }
+/* The header is sticky, so its height is taken off every screen for the whole
+   visit. Slightly smaller on phones keeps the logo prominent without pushing
+   the enquiry form further down. */
+@media (max-width: 575.98px) {
+  .topbar__logo { height: 54px; }
+}
 .topbar__phone { color: var(--charcoal); text-decoration: none; font-weight: 600; font-size: 0.92rem; }
 .topbar__phone:hover { color: var(--red); }
 
@@ -453,12 +459,14 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; letter-spacing: -0
    logo in its own colours keeps the word readable; a light plate behind it
    gives the dark linework enough contrast to survive. */
 .footer__logo {
-  height: 52px; margin-bottom: 0.6rem;
+  height: 78px; margin-bottom: 0.8rem;
   background: rgba(255,255,255,.92);
-  padding: 6px 10px; border-radius: 8px;
+  padding: 8px 12px; border-radius: 10px;
 }
-.footer__meta { text-align: right; }
-@media (max-width: 575px) { .footer__meta { text-align: left; } }
+/* Keep the accreditation line clear of the fixed action rail, which sits at
+   right:16px and was covering the end of it. */
+.footer__meta { text-align: right; padding-right: 64px; }
+@media (max-width: 575px) { .footer__meta { text-align: left; padding-right: 0; } }
 
 /* ── Sticky action rail (right edge) ──
    Always-visible Call / WhatsApp / Enquiry. Labels expand on hover for
