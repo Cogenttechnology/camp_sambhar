@@ -64,15 +64,11 @@
 
   document.querySelectorAll('.js-open-enquiry').forEach(function (btn) {
     btn.addEventListener('click', function () {
+      // Remember which stay the visitor was looking at. The dropdown is gone,
+      // so this rides along on the form and is submitted with the lead.
       var interest = btn.getAttribute('data-interest');
-      if (interest) {
-        var sel = document.getElementById('m_interest');
-        if (sel) {
-          Array.prototype.forEach.call(sel.options, function (o) {
-            if (o.value === interest || o.text === interest) sel.value = o.value;
-          });
-        }
-      }
+      var mForm = document.getElementById('leadFormModal');
+      if (mForm) mForm.setAttribute('data-interest', interest || '');
       track('enquiry_modal_open', { cta_location: btn.getAttribute('data-cta') || 'unknown' });
 
       if (enquiryModal) {
@@ -130,11 +126,16 @@
       // Honeypot — bots fill hidden fields
       if (form.company && form.company.value) return;
 
-      // Native validation with Bootstrap styling
+      // Native validation with Bootstrap styling. Email is optional, so an
+      // empty box is fine — only a filled-in, malformed address blocks submit.
       var valid = true;
-      ['name', 'phone'].forEach(function (fieldName) {
+      ['name', 'phone', 'email'].forEach(function (fieldName) {
         var field = form.elements[fieldName];
         if (!field) return;
+        if (fieldName === 'email' && field.value.trim() === '') {
+          field.classList.remove('is-invalid');
+          return;
+        }
         if (!field.checkValidity()) {
           field.classList.add('is-invalid');
           valid = false;
@@ -151,18 +152,28 @@
 
       var checkIn = form.elements.checkIn ? form.elements.checkIn.value : '';
       var guests = form.elements.guests ? form.elements.guests.value : '';
-      var interest = form.elements.interest ? form.elements.interest.value : '';
+      var email = form.elements.email ? form.elements.email.value.trim() : '';
+
+      // The "I'm interested in" dropdown was removed at the client's request,
+      // but the CTA the visitor clicked still tells us which stay they were
+      // looking at. That is captured on the form as data-interest when the
+      // modal opens, so the sales team keeps the context without the guest
+      // having to answer another question.
+      var interest = form.getAttribute('data-interest') || '';
 
       var data = {
         name: form.elements.name.value.trim(),
         phone: form.elements.phone.value.trim(),
+        email: email || null,
         checkIn: checkIn || null,
         guests: guests,
         interest: interest,
         message:
-          'Google Ads landing page enquiry — ' + interest +
+          'Google Ads landing page enquiry' +
+          (interest ? ' — ' + interest : '') +
           ' · ' + guests + ' guest(s)' +
-          (checkIn ? ' · check-in ' + checkIn : ''),
+          (checkIn ? ' · travel date ' + checkIn : '') +
+          (email ? ' · ' + email : ''),
         sourcePage: window.location.pathname + window.location.search
       };
 
@@ -192,9 +203,10 @@
           'Hi Camp Sambhar, I would like to check availability.%0A' +
           'Name: ' + encodeURIComponent(d.name) + '%0A' +
           'Phone: ' + encodeURIComponent(d.phone) + '%0A' +
-          (d.checkIn ? 'Check-in: ' + encodeURIComponent(d.checkIn) + '%0A' : '') +
-          'Guests: ' + encodeURIComponent(d.guests) + '%0A' +
-          'Interested in: ' + encodeURIComponent(d.interest);
+          (d.email ? 'Email: ' + encodeURIComponent(d.email) + '%0A' : '') +
+          (d.checkIn ? 'Travel dates: ' + encodeURIComponent(d.checkIn) + '%0A' : '') +
+          'Guests: ' + encodeURIComponent(d.guests) +
+          (d.interest ? '%0AInterested in: ' + encodeURIComponent(d.interest) : '');
 
         var wa = document.getElementById(waId);
         if (wa) wa.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + msg;
@@ -285,10 +297,111 @@
     });
   }
 
-  /* ── Set a sensible min date on check-in ── */
-  var checkin = document.getElementById('checkin');
-  if (checkin) {
-    var today = new Date();
-    checkin.min = today.toISOString().split('T')[0];
-  }
+  /* ── Set a sensible min date on the travel-date fields ── */
+  ['checkin', 'm_checkin'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.min = new Date().toISOString().split('T')[0];
+  });
+
+  /* ── Image sliders (hero + stay cards) ──
+     Cross-fades .is-active between children. Every slider on the page is
+     driven by one timer each, started only when it scrolls into view so
+     off-screen cards are not animating for nothing.
+
+     Respects prefers-reduced-motion: those visitors keep the first image. */
+  (function initSliders() {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+
+    document.querySelectorAll('.js-slider').forEach(function (slider) {
+      var slides = slider.children;
+      if (slides.length < 2) return;
+
+      var interval = parseInt(slider.getAttribute('data-interval'), 10) || 3000;
+      var i = 0;
+      var timer = null;
+
+      function advance() {
+        slides[i].classList.remove('is-active');
+        i = (i + 1) % slides.length;
+        slides[i].classList.add('is-active');
+      }
+
+      function start() { if (!timer) timer = setInterval(advance, interval); }
+      function stop() { clearInterval(timer); timer = null; }
+
+      // Only run while visible — saves battery and avoids background repaints.
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          entries[0].isIntersecting ? start() : stop();
+        }, { threshold: 0.15 }).observe(slider);
+      } else {
+        start();
+      }
+
+      // Pause when the tab is hidden, or every slider races on return.
+      document.addEventListener('visibilitychange', function () {
+        document.hidden ? stop() : start();
+      });
+    });
+  })();
+
+  /* ── Gallery carousel ──
+     Auto-scrolls right-to-left and wraps at the end; arrows page by one tile.
+     Scroll position drives everything, so a touch swipe and the arrows cannot
+     disagree about where the carousel is. */
+  document.querySelectorAll('.js-carousel').forEach(function (wrap) {
+    var track = wrap.querySelector('.js-carousel-track');
+    var prev = wrap.querySelector('.js-carousel-prev');
+    var next = wrap.querySelector('.js-carousel-next');
+    if (!track) return;
+
+    var interval = parseInt(wrap.getAttribute('data-interval'), 10) || 3500;
+    var timer = null;
+
+    function step() {
+      var item = track.querySelector('.carousel__item');
+      if (!item) return 0;
+      // Tile width plus the flex gap, so a page lands cleanly on a snap point.
+      return item.getBoundingClientRect().width +
+        parseFloat(getComputedStyle(track).columnGap || 0);
+    }
+
+    function advance() {
+      // 2px of slack: sub-pixel widths mean the end is rarely reached exactly.
+      var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+      atEnd ? (track.scrollLeft = 0) : track.scrollBy({ left: step(), behavior: 'smooth' });
+    }
+
+    function start() { if (!timer) timer = setInterval(advance, interval); }
+    function stop() { clearInterval(timer); timer = null; }
+
+    if (next) next.addEventListener('click', function () { stop(); advance(); start(); });
+    if (prev) prev.addEventListener('click', function () {
+      stop();
+      var atStart = track.scrollLeft <= 2;
+      atStart ? (track.scrollLeft = track.scrollWidth) : track.scrollBy({ left: -step(), behavior: 'smooth' });
+      start();
+    });
+
+    // Do not fight the visitor while they are reading or swiping.
+    wrap.addEventListener('mouseenter', stop);
+    wrap.addEventListener('mouseleave', start);
+    track.addEventListener('touchstart', stop, { passive: true });
+
+    document.addEventListener('visibilitychange', function () {
+      document.hidden ? stop() : start();
+    });
+
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;   // arrows still work; nothing moves on its own
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries[0].isIntersecting ? start() : stop();
+      }, { threshold: 0.2 }).observe(wrap);
+    } else {
+      start();
+    }
+  });
 })();

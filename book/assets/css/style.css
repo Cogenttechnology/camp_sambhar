@@ -93,6 +93,21 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; letter-spacing: -0
 /* ── Hero ── */
 .hero { position: relative; padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(3rem, 6vw, 5rem); overflow: hidden; }
 .hero__bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+
+/* ── Slider ──
+   Slides are stacked and cross-faded by opacity rather than moved, so there is
+   no layout work per frame and the text above stays perfectly still. */
+.hero__slider { position: absolute; inset: 0; }
+.hero__slide {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0; transition: opacity 900ms ease-in-out;
+}
+.hero__slide.is-active { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__slide { transition: none; }
+}
 .hero__scrim {
   position: absolute; inset: 0;
   background: linear-gradient(105deg, rgba(23,37,58,.9) 0%, rgba(42,39,35,.72) 45%, rgba(42,39,35,.5) 100%);
@@ -132,7 +147,27 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; letter-spacing: -0
    Every trimmed line here is one less scroll between the ad click and the
    lead form, which is what the page is paid to deliver. */
 @media (max-width: 991.98px) {
-  .hero { padding: 1.5rem 0 2rem; }
+  /* Client request: on phones the slider is a band at the top with nothing
+     written over it, and all copy sits below. Overlaying text on a changing
+     photo made both harder to read. */
+  .hero { padding: 0 0 2rem; }
+  .hero__slider {
+    position: relative; inset: auto;
+    height: 46vw; min-height: 190px; max-height: 300px;
+    margin-bottom: 1.4rem;
+  }
+  .hero__scrim { display: none; }
+  .hero__copy { color: var(--charcoal); }
+  .hero__title { color: var(--charcoal); }
+  .hero__sub, .hero__trust { color: rgba(42,39,35,.78); }
+  .hero__trust strong { color: var(--charcoal); }
+  .badge-pill-soft {
+    background: rgba(169,43,46,.08); border-color: rgba(169,43,46,.22); color: var(--brand);
+  }
+  .hero__chips li {
+    background: rgba(42,39,35,.05); border-color: rgba(42,39,35,.14); color: var(--charcoal);
+  }
+
   .hero__title { font-size: clamp(2rem, 8.5vw, 2.6rem); margin-bottom: .7rem; }
   .hero__sub--mobile { font-size: .96rem; margin-bottom: 1rem; line-height: 1.5; }
   .badge-pill-soft { font-size: .68rem; padding: .3rem .8rem; margin-bottom: .8rem !important; }
@@ -215,7 +250,20 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; letter-spacing: -0
   transition: transform .25s, box-shadow .25s;
 }
 .stay-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-.stay-card__img { height: 240px; background-size: cover; background-position: center; position: relative; }
+.stay-card__img { height: 240px; background-size: cover; background-position: center; position: relative; overflow: hidden; }
+
+/* Slider inside a stay card — same cross-fade as the hero. */
+.stay-card__slider { position: absolute; inset: 0; }
+.stay-card__slide {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0; transition: opacity 800ms ease-in-out;
+}
+.stay-card__slide.is-active { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .stay-card__slide { transition: none; }
+}
 .stay-card__badge {
   position: absolute; top: 14px; left: 14px;
   background: var(--red); color: #fff; font-size: 0.7rem; font-weight: 700;
@@ -246,6 +294,91 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; letter-spacing: -0
 
 .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
 .exp-grid img { width: 100%; height: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius); }
+
+/* ── Experience card: copy first, its own photograph beneath ──
+   Text above the image so the picture always reads as illustrating the
+   experience named directly above it. */
+.exp-card {
+  display: flex; flex-direction: column; height: 100%;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: var(--radius); overflow: hidden;
+}
+.exp-card__body { padding: 1.2rem 1.2rem 1rem; flex: 1; }
+.exp-card .exp-num {
+  display: block; font-family: var(--serif);
+  font-size: 1.5rem; color: var(--sand); line-height: 1; margin-bottom: .5rem;
+}
+.exp-card h4 { font-size: 1.08rem; color: #fff; margin-bottom: .4rem; }
+.exp-card p { font-size: .88rem; margin: 0; color: rgba(255,255,255,.84); }
+.exp-card img {
+  width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; margin-top: auto;
+}
+
+/* ── Resort gallery ──
+   Two wide tiles anchor the grid so it does not read as a uniform contact
+   sheet. Captions sit in a gradient over the image rather than below it,
+   which keeps every tile the same height whatever the caption length. */
+.carousel-wrap { position: relative; }
+
+.carousel {
+  display: flex; gap: 0.9rem;
+  overflow-x: auto; scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;                /* the arrows are the affordance */
+  -ms-overflow-style: none;
+}
+.carousel::-webkit-scrollbar { display: none; }
+
+.carousel__item {
+  position: relative; margin: 0; flex: 0 0 calc((100% - 1.8rem) / 3);
+  scroll-snap-align: start; overflow: hidden;
+  border-radius: var(--radius); aspect-ratio: 4 / 3;
+}
+.carousel__item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 700ms ease;
+}
+.carousel__item:hover img { transform: scale(1.05); }
+.carousel__item figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 1.6rem 0.9rem 0.7rem;
+  background: linear-gradient(to top, rgba(23,37,58,.78), transparent);
+  color: #fff; font-size: 0.85rem; font-weight: 500;
+}
+
+.carousel-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  width: 42px; height: 42px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: #fff; color: var(--charcoal);
+  border: 1px solid rgba(42,39,35,.12);
+  box-shadow: 0 3px 14px rgba(42,39,35,.16);
+  cursor: pointer; transition: background 160ms ease;
+}
+.carousel-arrow:hover { background: var(--ivory); }
+.carousel-arrow--prev { left: -14px; }
+.carousel-arrow--next { right: -14px; }
+
+@media (max-width: 991.98px) {
+  /* Two per screen on tablets, one on phones — the client asked for the
+     larger tile size rather than a dense grid. */
+  .carousel__item { flex-basis: calc((100% - 0.6rem) / 2); }
+  .carousel { gap: 0.6rem; }
+  .carousel__item figcaption { font-size: 0.78rem; padding: 1.3rem 0.7rem 0.55rem; }
+  .carousel-arrow--prev { left: 4px; }
+  .carousel-arrow--next { right: 4px; }
+}
+
+@media (max-width: 575.98px) {
+  .carousel__item { flex-basis: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel { scroll-behavior: auto; }
+  .carousel__item img { transition: none; }
+  .carousel__item:hover img { transform: none; }
+}
 
 /* ── Reviews ── */
 .review { background: var(--ivory); border-radius: var(--radius); padding: 1.6rem; height: 100%; margin: 0; }
@@ -292,7 +425,16 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; letter-spacing: -0
 
 /* ── Footer ── */
 .footer { background: var(--charcoal); color: rgba(255,255,255,.7); padding: 2.2rem 0; font-size: 0.85rem; }
-.footer__logo { height: 44px; margin-bottom: 0.6rem; filter: brightness(0) invert(1); opacity: .85; }
+/* No invert filter here.
+   The wordmark is white type on a red block, so brightness(0) invert(1) turned
+   it white-on-white and "SAMBHAR" vanished against the dark footer. Showing the
+   logo in its own colours keeps the word readable; a light plate behind it
+   gives the dark linework enough contrast to survive. */
+.footer__logo {
+  height: 52px; margin-bottom: 0.6rem;
+  background: rgba(255,255,255,.92);
+  padding: 6px 10px; border-radius: 8px;
+}
 .footer__meta { text-align: right; }
 @media (max-width: 575px) { .footer__meta { text-align: left; } }
 
