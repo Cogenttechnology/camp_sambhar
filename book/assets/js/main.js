@@ -5,9 +5,11 @@
 (function () {
   'use strict';
 
-  // Where the enquiry is POSTed. Points at the main site's API by default;
-  // change to an absolute URL if this page is hosted on another domain.
-  var ENQUIRY_ENDPOINT = '/api/enquiry';
+  // Where the enquiry is POSTed. Relative on purpose: when this page and the
+  // PHP API sit on the same host (book.campsambhar.com) there is no CORS
+  // preflight to satisfy. Use an absolute URL only if they are split apart —
+  // and then add that origin to the allow-list in api/enquiry.php.
+  var ENQUIRY_ENDPOINT = 'api/enquiry.php';
   var WHATSAPP_NUMBER = '919414991122';
 
   /* ── Conversion tracking ────────────────────────────────

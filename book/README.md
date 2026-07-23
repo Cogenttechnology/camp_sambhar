@@ -32,12 +32,15 @@ Alternatively — and more reliably — set your Ads conversion as a
 `assets/js/main.js`:
 
 ```js
-var ENQUIRY_ENDPOINT = '/api/enquiry';
+var ENQUIRY_ENDPOINT = 'api/enquiry.php';
 ```
 
-- Hosted on the same domain as the main site → leave as is; leads land in the CMS under **Enquiries**.
-- Hosted separately → use the absolute URL, e.g. `https://campsambhar.com/api/enquiry`
-  (the API must allow CORS from the landing page's origin).
+That is the bundled PHP endpoint, which stores leads in MySQL and surfaces them
+in the dashboard at `/admin/`. Relative on purpose: page and API share an origin
+on `book.campsambhar.com`, so there is no CORS preflight.
+
+**See [DEPLOY.md](DEPLOY.md) for the full Hostinger setup** — subdomain,
+database, config and the admin password.
 
 **The form never loses a lead:** if the endpoint fails, the visitor still reaches
 the thank-you page with a prefilled WhatsApp message ready to send.

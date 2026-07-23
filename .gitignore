@@ -36,6 +36,10 @@ pnpm-debug.log*
 # typescript
 *.tsbuildinfo
 
+# Landing-page admin credentials — the live file holds the database password
+# and the admin hash. Only config.sample.php belongs in the repository.
+/book/admin/inc/config.php
+
 # raw client source material — NOT versioned (~2.1 GB, exceeds GitHub limits).
 # Everything the site actually uses has been processed into /public and seeded
 # into the CMS. See README "Raw client assets" for where the originals live.

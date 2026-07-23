@@ -1,0 +1,14 @@
+# This folder holds database credentials and the admin password hash.
+# Nothing in it should ever be fetchable over HTTP — the PHP files include one
+# another from disk, so blocking web access costs nothing.
+#
+# Apache 2.4 (Hostinger's default)
+<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>
+
+# Apache 2.2 fallback
+<IfModule !mod_authz_core.c>
+  Order allow,deny
+  Deny from all
+</IfModule>
