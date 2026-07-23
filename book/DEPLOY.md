@@ -1,7 +1,10 @@
-# Deploying to Hostinger — `book.campsambhar.com`
+# Deploying to cPanel — `book.campsambhar.com`
 
 The landing page, the lead API and the admin dashboard are one PHP + MySQL
 bundle. No build step, no Node, no Composer — upload and configure.
+
+Written for cPanel; the steps are the same on any Apache + PHP + MySQL host
+(Hostinger's hPanel, Plesk, a VPS) — only the control-panel menu names differ.
 
 ```
 book/                        ← upload the CONTENTS of this folder to the subdomain root
@@ -21,35 +24,47 @@ book/                        ← upload the CONTENTS of this folder to the subdo
 
 ## 1. Create the subdomain
 
-hPanel → **Domains → Subdomains** → create `book`.
+cPanel → **Domains → Subdomains** (or **Create a New Domain**) → `book`.
 
-Note the folder it creates — usually `public_html/book`. That folder becomes the
-document root for `book.campsambhar.com`.
+Note the document root it creates — usually `public_html/book`. That folder is
+what `book.campsambhar.com` serves.
 
 ## 2. Create the database
 
-hPanel → **Databases → MySQL Databases**. Create a database and a user, and give
-that user **all privileges** on it.
+cPanel → **MySQL® Databases**. Three separate steps, and the third is the one
+people miss:
 
-Write down the four values: host (`localhost`), database name, username,
-password. Hostinger prefixes names, so they look like `u123456789_leads`.
+1. **Create New Database** — e.g. `book_landingpage`
+2. **Add New User** — e.g. `booking_landing`, with a generated password
+3. **Add User To Database** — select both, then tick **ALL PRIVILEGES**
+
+Creating a user does *not* attach it to the database. Skipping step 3 is the
+usual cause of "Connection failed" at setup.
+
+cPanel prefixes both names with your account, so the real values look like
+`neerxmsz_book_landingpage` and `neerxmsz_booking_landing`.
 
 ## 3. Upload
 
-Upload **the contents of `book/`** — not the folder itself — into the subdomain
-folder. `index.html` must sit at the root, so that
+Upload **the contents of `book/`** — not the folder itself — into the subdomain's
+document root. `index.html` must sit at the root so that
 `https://book.campsambhar.com/` serves the landing page directly.
 
-Use hPanel → File Manager, or FTP.
+cPanel → **File Manager** (upload a zip and Extract is quickest), or FTP.
+
+Make sure hidden files are included: `.htaccess` at the root and in `admin/inc/`
+both matter. In File Manager, **Settings → Show Hidden Files** to confirm they
+arrived.
 
 ## 4. Configure
 
 Copy `admin/inc/config.sample.php` to `admin/inc/config.php` and fill in:
 
 ```php
-define('DB_NAME', 'u123456789_leads');
-define('DB_USER', 'u123456789_admin');
-define('DB_PASS', 'the password you chose');
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'neerxmsz_book_landingpage');
+define('DB_USER', 'neerxmsz_booking_landing');
+define('DB_PASS', 'the database password from step 2');
 
 define('ADMIN_USER', 'admin');
 define('ADMIN_PASS_HASH', '…');   // step 5 generates this
@@ -58,6 +73,9 @@ define('APP_SECRET', 'any long random string, 32+ characters');
 
 define('NOTIFY_EMAIL', 'bookings@campsambhar.com');   // '' to disable alerts
 ```
+
+The database name and user must include the account prefix cPanel added —
+`neerxmsz_` here. Using the short name you typed into the form will fail.
 
 `config.php` is git-ignored, so the live credentials never reach the repository.
 
@@ -119,7 +137,7 @@ shows which campaign produced it.
 - `admin/inc/` is blocked by its own `.htaccess`. **Confirm this after upload**
   by visiting `https://book.campsambhar.com/admin/inc/config.php` — you should
   get 403 or 404, never PHP source or a blank page. If it renders blank, the
-  block is not active: contact Hostinger support about `AllowOverride`.
+  block is not active: ask your host to enable `AllowOverride All` for this folder.
 - Passwords are stored as bcrypt hashes, never plain text.
 - The admin session cookie is `HttpOnly` and `SameSite=Lax`; all forms carry
   CSRF tokens.
@@ -133,7 +151,7 @@ shows which campaign produced it.
 
 ## Maintenance
 
-**Back up the leads.** hPanel → Databases → phpMyAdmin → Export. The CSV export
+**Back up the leads.** cPanel → phpMyAdmin → select the database → Export. The CSV export
 in the dashboard is a convenience, not a backup: it omits nothing important but
 is not a restorable dump.
 

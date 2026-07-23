@@ -39,7 +39,7 @@ That is the bundled PHP endpoint, which stores leads in MySQL and surfaces them
 in the dashboard at `/admin/`. Relative on purpose: page and API share an origin
 on `book.campsambhar.com`, so there is no CORS preflight.
 
-**See [DEPLOY.md](DEPLOY.md) for the full Hostinger setup** — subdomain,
+**See [DEPLOY.md](DEPLOY.md) for the full cPanel setup** — subdomain,
 database, config and the admin password.
 
 **The form never loses a lead:** if the endpoint fails, the visitor still reaches
